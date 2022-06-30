@@ -1,0 +1,208 @@
+.opcoesUser{
+	display: inline-flex;
+    width: 95%;
+    height: 25%;
+    margin: 0;
+    /* left: 50%; */
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.welcomemsg{
+	font-size: 28px;
+	/*font-family: 'Courier New', Courier, monospace;*/
+	font-weight: bold;
+}
+
+.rectan{
+	font-size: 20px;
+  	background-color: #dddddd;
+  	color: black;
+  	width: 15%;
+  	height: 3%;
+  	line-height: 5px;
+  	text-align: center;
+  	font-family: Helvetica, Arial, sans-serif;
+  	font-weight: bold;
+	font-style: none;
+  	position: relative;
+	margin: 1.5%;
+	border-radius: 10px;
+	/* border-style: solid;
+	border-width: 1px;
+	border-color: #666; */
+	display: inline;
+	padding: 0 1%;
+	-webkit-transition: all 0.4s ease;
+	-moz-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+	cursor: pointer;
+  	box-shadow: 5px -2px #999;
+}
+
+.rectan:hover{
+	background-color: #007100;
+	color: #dddddd;
+	box-shadow: 5px -2px rgb(107, 107, 107);
+}
+
+.rectan:active {
+	background-color: #007100;
+	box-shadow: 2px -1px #666;
+	transform: translateY(4px);
+}
+
+.btnUser{
+	font-size: 15px;
+  	background-color: #dddddd;
+  	color: black;
+  	/*width: 10%;
+  	height: 0.1%;*/
+  	/* line-height: 5px; */
+  	text-align: center;
+  	font-family: Helvetica, Arial, sans-serif;
+  	font-weight: bold;
+	font-style: none;
+  	cursor: pointer;
+  	position: relative;
+	margin: 0.5% 1% 1% 0%;
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 0px;
+	border-color: #666;
+	padding: 1%;
+	-webkit-transition: all 0.4s ease;
+	-moz-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+  	box-shadow: 2px -1px #999;
+	display: inline;
+}
+
+.btnUser:hover{
+	background-color: #007100;
+	color: #dddddd;
+	box-shadow: 2px -1px rgb(107, 107, 107);
+	border: 0px solid;
+}
+.btnUser:active {
+	background-color: #007100;
+	box-shadow: 0.5px -1px #666;
+	transform: translateY(-1px), translateX(-2px);
+	border: 0px solid;
+}
+
+.btnTable{
+	font-size: 15px;
+  	background-color: #dddddd;
+  	color: black;
+  	/*width: 10%;
+  	height: 0.1%;*/
+  	line-height: 5px;
+  	text-align: center;
+  	font-family: Helvetica, Arial, sans-serif;
+  	font-weight: bold;
+	font-style: none;
+  	cursor: pointer;
+  	position: relative;
+	margin: 0% 1% 1% 0%;
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 0px;
+	border-color: #666;
+	padding: 13%;
+	-webkit-transition: all 0.4s ease;
+	-moz-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+  	box-shadow: 2px -1px #999;
+	display: inline;
+}
+
+.btnTable:hover{
+	background-color: #007100;
+	color: #dddddd;
+	box-shadow: 2px -1px rgb(107, 107, 107);
+}
+.btnTable:active {
+	background-color: #007100;
+	box-shadow: 0.5px -1px #666;
+	transform: translateY(4px);
+}
+
+.btnRemove{
+	font-size: 15px;
+  	background-color: #dddddd;
+  	color: #9e0000;
+  	/*width: 10%;
+  	height: 0.1%;*/
+  	/* line-height: 5px; */
+  	text-align: center;
+  	font-family: Helvetica, Arial, sans-serif;
+  	font-weight: bold;
+	font-style: none;
+  	cursor: pointer;
+  	position: relative;
+	margin: 0.5% 1% 1% 0%;
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 0px;
+	border-color: #666;
+	padding: 5%;
+	-webkit-transition: all 0.4s ease;
+	-moz-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+  	box-shadow: 2px -1px #999;
+	display: inline;
+}
+.btnRemove:hover{
+	background-color: #9e0000;
+	color: #dddddd;
+	box-shadow: 2px -1px rgb(107, 107, 107);
+	border: 0px solid;
+}
+.btnRemove:active {
+	background-color: #9e0000;
+	box-shadow: 0.5px -1px #666;
+	transform: translateY(4px);
+	border: 0px solid;
+}
+
+.btnAvancar{
+	font-size: 15px;
+  	background-color: #dddddd;
+  	color: #007100;
+  	/*width: 10%;
+  	height: 0.1%;*/
+  	/* line-height: 5px; */
+  	text-align: center;
+  	font-family: Helvetica, Arial, sans-serif;
+  	font-weight: bold;
+	font-style: none;
+  	cursor: pointer;
+  	position: relative;
+	margin: 0.5% 1% 1% 0%;
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #007100;
+	padding: 5%;
+	-webkit-transition: all 0.4s ease;
+	-moz-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+  	box-shadow: 2px -1px #999;
+	display: inline;
+}
+
+.btnAvancar:hover{
+	background-color: #007100;
+	color: #dddddd;
+	box-shadow: 2px -1px rgb(107, 107, 107);
+	border: 0px solid;
+}
+.btnAvancar:active {
+	background-color: #007100;
+	box-shadow: 0.5px -1px #666;
+	border: 0px solid;
+	transform: translateY(4px);
+}

@@ -1,0 +1,39 @@
+.prdtTitle{
+    color: #333333 !important;
+}
+
+.prdtTitle:hover{
+    color: #585858 !important;
+}
+
+.green{
+    color: #007100 !important;
+}
+
+.marginRight{
+    margin-right: 20px !important;
+}
+
+.container{
+    max-width: 1300px;
+}
+
+.wdth{
+    max-width: 68% !important;
+    margin-right: 30px;
+}
+
+.subtotal{
+	padding: 5%;
+    background-color: rgb(205, 205, 205) !important;
+    border-radius: 20px;
+    margin-top: 7px;
+}
+
+.sideBar1{
+    background-color: rgb(241, 241, 241) !important;
+    /* border: 2px solid rgb(192, 192, 192); */
+    border-radius: 20px;
+    /* padding: 5px; */
+    max-height: 510px;
+}
