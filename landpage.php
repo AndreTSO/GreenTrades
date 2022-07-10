@@ -140,11 +140,7 @@
 
                         echo "<div class='rectan'>";
                             echo "<a href='userAccount.php'style='text-align: center; line-height: 100px;'><span class='linkUser'></span>Conta Pessoal</a>";
-                            echo "<ul>
-                                    <li><a href='editUser.php' class='listRect'>Editar Dados</a></li>
-                                    <li><a id='myBtn' class='listRect'>Eliminar Conta</a></li>
-                                    <li><a href='mudarPass.php' class='listRect'>Mudar Password</a></li>
-                                  </ul>";
+                            
                         echo "</div>";
 
 

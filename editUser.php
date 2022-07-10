@@ -155,233 +155,84 @@
 								<hr class="middle">
 							</div>
 							<h6 class="text-center w-responsive mx-auto mb-5">Apenas altere os dados necessários.</h6>
-							<hr>
-							<center>
-								<div class="">
-									<div class="">
-										<div class="form1">
-											<input type="hidden" name="codigo" value=5>
-											<!--Grid column-->
-
-											<div class="form-group">
-												<strong><label for="name" class=""><em>Nome: </em></label></strong>
-
-											</div>
-											<div class="input-group">
-												<center>
-													<input class="formInput" id="nome" name="nome" type="text" value="<?php echo $resultado['nome']; ?>" required placeholder="">
-												</center>
-											</div>
-										</div>
-
-										<div class="form1">
-											<div class="form-group">
-												<strong><label for="surname" class=""><em>Sobrenome: </em></label></strong>
-
-											</div>
-											<div class="input-group">
-												<center>
-													<input class="formInput" id="sobreNome" name="sobreNome" value="<?php echo $resultado['sobreNome']; ?>" type="text" required placeholder="">
-												</center>
-											</div>
-										</div>
-										
-										<div class="form1">
-											<div class="form-group">
-												<strong><label for="gender" class=""><em>Género: </em></label></strong>
-
-											</div>
-											<div class="input-group">
-												<center>
-													<select name="genero" class="formInput">
-														<option name="genero" required value="M" <?php echo ($resultado['genero'] == 'M' ? "checked" : ""); ?>> Masculino
-														<option name="genero" required value="F" <?php echo ($resultado['genero'] == 'F' ? "checked" : ""); ?>> Feminino
-														<option name="genero" required value="O" <?php echo ($resultado['genero'] == 'O' ? "checked" : ""); ?>> Prefiro não dizer
-													</select>
-												</center>
-											</div>
-										</div>
-										
-										<div class="form1">
-											<div class="form-group">
-												<strong><label for="" class="">Nº de Contribuinte:</label></strong>
-
-											</div>
-											<div class="input-group">
-												<center>
-													<input class="formInput inputGroupContainer" id="nif" name="nif" type="number" value="<?php echo $resultado['nif']; ?>" pattern="\d{9}" title="Numero de contribuinte com 9 digitos" required placeholder="">
-												</center>
-											</div>
-										</div>
-										
-										<div class="form1">
-											<div class="form-group">
-												<strong><label for="" class=""><em>Data Nascimento: </em></label></strong>
-
-											</div>
-											<div class="input-group">
-												<center>
-													<input class="formInput" id="dataNascimento" name="dataNascimento" type="date" value="<?php echo $resultado['dataNascimento']; ?>" required placeholder="">
-												</center>
-											</div>
-										</div>
-										<hr>
-										<div class="form1">
-											<div class="form-group">
-												<strong><label for="" class=""><em>Telefone: </em></label></strong>
-
-											</div>
-											<div class="input-group">
-												<center>
-													<input class="formInput" id="tlf" name="contacto" type="text" pattern="\d{9}" value="<?php echo $resultado['contato']; ?>" title="Numero de telefone com 9 digitos" required placeholder="">
-												</center>
-											</div>
-
-
-										</div>
-										
-										<div class="form1">
-											<div class="form-group">
-												<strong><label for="" class=""><em>Email: </em></label></strong>
-
-											</div>
-											<div class="input-group">
-												<center>
-													<input class="formInput" id="email" name="email" type="email" value="<?php echo $resultado['email']; ?>" required placeholder="">
-												</center>
-											</div>
-
-
-										</div>
-										
-										<div class="form1">
-											<div class="form-group">
-												<strong><label for="" class=""><em>Morada: </em></label></strong>
-
-											</div>
-											<div class="input-group">
-												<center>
-													<input class="formInput" id="morada" name="morada" type="text" value="<?php echo $resultado['morada']; ?>" required placeholder="">
-												</center>
-											</div>
-
-
-										</div>
-										<hr>
-										<div class="form1">
-											<div class="form-group">
-												<strong><label for="" class=""><em>Código Postal: </em></label></strong>
-
-											</div>
-											<div class="input-group">
-												<center>
-													<input class="formInput" id="codPostal" name="codigoPostal" pattern="\d{4}-\d{3}" title="DDDD-DDD" type="text" value="<?php echo $resultado['codigoPostal']; ?>" required placeholder="">
-												</center>
-											</div>
-										</div>
-										
-										<div class="form1">
-											<div class="form-group">
-												<strong><label for="" class=""><em>Distrito: </em></label></strong>
-
-											</div>
-											<div class="input-group">
-												<center>
-													<select name='distrito' id='distrito' onChange='obtemDistrito()' class='formInput' required>
-														<?php
-														$resultado2 = $ctrldistrict->getDistrict($db);
-
-														echo "<option value=''>Distrito</option>";
-														if ($resultado2 && $resultado2->RecordCount() > 0) {
-
-															while ($linha = $resultado2->FetchRow()) {
-																echo "<option " . ($resultado['distrito'] == $linha['id'] ? "selected" : "") . " value='" . $linha['id'] . "'>" . $linha['name'] . "</option>";
-															}
-														}
-														?>
-													</select>
-												</center>
-											</div>
-
-										</div>
-										
-										<div class="form1">
-											<div class="form-group">
-												<strong><label for="" class=""><em>Concelho: </em></label></strong>
-
-											</div>
-											<div class="input-group">
-												<center>
-													<span id="conselho2">
-														<select name='concelho' id='concelho' class='formInput' required>
-															<?php
-															$resultado2 = $ctrldistrict->getConcelhoByDistrictId($db, $resultado['distrito']);
-
-															echo "<option value=''>Concelho</option>";
-															if ($resultado2 && $resultado2->RecordCount() > 0) {
-
-																while ($linha = $resultado2->FetchRow()) {
-																	echo "<option " . ($resultado['concelho'] == $linha['id'] ? "selected" : "") . " value='" . $linha['id'] . "'>" . $linha['name'] . "</option>";
-																}
-															}
-															?>
-														</select>
-													</span>
-
-												</center>
-											</div>
-										</div>
-										<hr>
-										<div class="form1">
-											<div class="form-group">
-												<strong><label for="" class=""><em>Mostrar artigos personalizados: </em></label></strong>
-
-											</div>
-											<div class="input-group">
-												<center>
-													<select name="anuncios" class="formInput">
-														<option name="anuncios" required <?php echo ($resultado['anuncios'] == '1' ? "checked" : ""); ?> value="1"> Sim
-														<option name="anuncios" required <?php echo ($resultado['anuncios'] == '0' ? "checked" : ""); ?> value="0"> Não
-
-													</select>
-												</center>
-											</div>
-											<br>
-										</div>
-										<hr>
-										
-										<div class="">
-											<center>
-												<strong><label for="" class=""><em>Insira a password atual para guardar as alterações feitas: </em></label></strong>
-
-											</center>
-										</div>
-										<center>
-											<input class="formInput" name="passAntiga" type="password" required placeholder="Password atual">
-
-										</center>
-										<br>
-
-										
-										<center>
-											
-											<input type="submit" value="Guardar" class="btnUser">
-											<input type="hidden" required value="<?php echo $resultado['password']; ?>">
-											<span id="atualiza"></span>
-										</center>
+							
+							
+								
+										<?php
+										$resultado = $ctrlUser->getTodosOsDados($_SESSION['nif']);
+										echo '<div class="container rounded bg-white mt-5 mb-5">
+                        <div class="row">
+                            <div class="col-md-3 border-right">
+                                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">' . $resultado['nome'] . '</span><span class="text-black-50">' . $resultado['email'] . '</span><span> </span></div>
+                            </div>
+                            <div class="col-md-5 border-right">
+                                <div class="p-3 py-5">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h4 class="text-right">Perfil</h4>
+                                    </div>
+                                    
+                                    
+                                    <div class="row mt-2">
+                                        <div class="col-md-6"><label class="labels"><strong><em>Nome:  &nbsp&nbsp</em></strong></label> <input type="text" class="form-control" placeholder=' . $resultado['nome'] . ' value=""></div>
+                                        <div class="col-md-6"><label class="labels"><strong><em>Sobrenome:  &nbsp&nbsp</em></strong></label><input type="text" class="form-control" placeholder=' . $resultado['sobreNome'] . ' value=""></div>
+                                        <div class="col-md-6"><label class="labels"><strong><em>Género:  &nbsp&nbsp</em></strong></label><input type="text" class="form-control" placeholder=' . $resultado['genero'] . ' value=""></div>
+                                        <div class="col-md-6"><label class="labels"><strong><em>Nascimento:  &nbsp&nbsp</em></strong></label><input type="text" class="form-control" placeholder=' . $resultado['dataNascimento'] . ' value=""></div>
+                                    </div>
+                                    <hr>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6"><label class="labels"><strong><em>Telefone: &nbsp&nbsp </em></strong></label> <input type="text" class="form-control" placeholder=' . $resultado['contato'] . ' value=""></div>
+                                        <div class="col-md-6"><label class="labels"><strong><em>Nº Contribuinte:  &nbsp&nbsp</em></strong></label><input type="text" class="form-control" placeholder=' . $resultado['nif'] . ' value=""></div>
+                                        <div class="col-md-6"><label class="labels"><strong><em>Morada: &nbsp&nbsp </em></strong></label><input type="text" class="form-control" placeholder=' . $resultado['morada'] . ' value=""> </div>
+                                        <div class="col-md-6"><label class="labels"><strong><em>Código Postal:  &nbsp&nbsp</em></strong></label><input type="text" class="form-control" placeholder=' . $resultado['codigoPostal'] . ' value=""></div>
+                                        <div class="col-md-6"><label class="labels"><strong><em>Distrito:  &nbsp&nbsp</em></strong></label><input type="text" class="form-control" placeholder=' . $ctrldistrict->getDistrictById($db, $resultado['distrito']). ' value=""></div>
+                                        <div class="col-md-6"><label class="labels"><strong><em>Concelho:  &nbsp&nbsp</em></strong></label><input type="text" class="form-control" placeholder=' . $ctrldistrict->getConcelhoById($db, $resultado['concelho']) . ' value=""></div>
+                                        <div class="col-md-8"><label class="labels"><strong><em>Email:  &nbsp&nbsp</em></strong></label><input type="text" class="form-control" placeholder=' . $resultado['email'] . ' value=""></div>
+                                    </div>
+                                    
+                                    ';
+										?>
 									</div>
 								</div>
-							</center>
-						</form>
-						<hr>
-						<div class="opções">
-							<a href="userAccount.php"><button class="btnUser">Voltar </button></a>
-						</div>
+								<div class="">
+				<center>
+					<strong><label for="" class=""><em>Insira a password atual para guardar as alterações feitas: </em></label></strong>
+
+				</center>
+			</div>
+			<center>
+				<input class="formInput" name="passAntiga" type="password" required placeholder="Password atual">
+
+			</center>
+
 					</div>
-				</section>
-				
-			</div><!-- /.container -->
+			</div>
+
+			
+			<br>
+
+
+
+			<center>
+
+				<input type="submit" value="Guardar" class="btnUser">
+				<input type="hidden" required value="<?php echo $resultado['password']; ?>">
+				<span id="atualiza"></span>
+			</center>
 		</div>
+	</div>
+	
+	</form>
+	<hr>
+	<center>
+	<div class="opções">
+		<a href="userAccount.php"><button class="btnUser">Voltar </button></a>
+	</div>
+	</center>
+	</div>
+	</section>
+
+	</div><!-- /.container -->
+	</div>
 	</div>
 
 	<?php

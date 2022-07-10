@@ -97,19 +97,28 @@
                     <hr class="middle">
                 </div>
 
-                <hr>
+                
                 <form ACTION="ajax_fornecedor.php" METHOD="POST">
                     <?php
                     $resultado = $ctrlProduto->getTodosOsDados($_POST['idProduto']);
                     echo "<input type='hidden' value='" . $_SESSION['nif'] . "' name='idFornecedor' >";
                     echo "<input type='hidden' value='" . $_POST['idProduto'] . "' name='idProduto' >";
                     echo "<input type='hidden' value='6' name='codigo' >";
-                    echo "<label><strong>Nome Produto: &nbsp</label></strong><input type='text' name='nome' value = '" . $resultado['nome'] . "' required><br>";
-                    echo "<label><strong>Descriçao Produto: &nbsp</label></strong> <textarea name='descricao' cols='60' required>" . $resultado['descricao'] . "</textarea><br>";
+                    echo '<div class="container rounded bg-white mt-5 mb-5">
+                            <div class="row">
+                                <div class="col-md-4 border-right">
+                                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><span class="font-weight-bold"></span><span class="text-black-50"></span><span> </span></div>
+                                </div>
+                                <div class="col-md-5 border-right">
+                                    <div class="p-3 py-5">
+                                        <div class="row mt-1">
 
+                                            <div class="col-md-12"><label><strong>Nome Produto: &nbsp</label></strong><input class="form-control" type="text" name="nome" value = "' . $resultado['nome'] . '" required></div><br>
+                                            <div class="col-md-12"><label><strong>Descriçao Produto: &nbsp</label></strong> <textarea class="form-control" name="descricao" cols="60" required>' . $resultado['descricao'] . '</textarea></div><br>
+                    ';
                     ?>
-                    <label><strong>Categoria: &nbsp</label></strong>
-                    <select name='tipo' id='categoriaPAPI' onChange='obtemSubCategoria()' required>
+                    <div class="col-md-12"><label><strong>Categoria: &nbsp</label></strong>
+                    <select name='tipo' class="form-control" id='categoriaPAPI' onChange='obtemSubCategoria()' required>
                         <?php
                         $resultado2 = $ctrllib->getCategoria($db);
 
@@ -119,13 +128,13 @@
                                 echo "<option " . ($resultado['tipo'] == $linha['idCategoria'] ? "selected" : "") . " value='" . $linha['idCategoria'] . "'>" . $linha['categoria'] . "</option>";
                             }
                         }
-                        echo "</select>";
+                        echo "</select></div>";
 
                         ?>
 
-                        <span id="conselho2">
+                            <div class="col-md-12"><span id="conselho2">
                             <br><label><strong>SubCategoria: &nbsp</label></strong>
-                            <select name="tags" id="tags" required>
+                            <select name="tags" class="form-control" id="tags" required>
                                 <?php
                                 $resultado2 = $ctrllib->getSubCategoriaByCategoriaId($db, $resultado['tipo']);
 
@@ -140,15 +149,17 @@
                             </select>
                             <br>
                         </span>
-
+                        </div>
+                        <hr>
+                        <div class="row mt-2">
                         <?php
 
 
                         //echo "SubCategoria Produto: <input type='text' name='tags' value = ''required><br>"; 
-                        echo "<label><strong>Preço Produto sem IVA: &nbsp</label></strong> <input type='number' name='precoSemIva' step='0.01' value = '" . $resultado['precoSemIva'] . "'required ><br>";
-                        echo "<label><strong>Tipo de IVA:  &nbsp</label></strong>
+                        echo "<div class='col-md-12'><label><strong>Preço Produto sem IVA: &nbsp</label></strong> <input type='number' class='form-control' name='precoSemIva' step='0.01' value = '" . $resultado['precoSemIva'] . "'required ></div><br>";
+                        echo "<div class='col-md-12'><label><strong>Tipo de IVA:  &nbsp</label></strong>
 
-                        <select name='tipoIVA' required >
+                        <select name='tipoIVA' class='form-control' required >
                             <option value='23' " . ($resultado['tipoIVA'] == '23' ? "selected" : "") . " >Normal - Continente - 23%</option>
                             <option value='22' " . ($resultado['tipoIVA'] == '22' ? "selected" : "") . " >Normal - Madeira - 22%</option>
                             <option value='18' " . ($resultado['tipoIVA'] == '18' ? "selected" : "") . " >Normal - Açores - 18%</option>
@@ -159,48 +170,58 @@
                             <option value='5' " . ($resultado['tipoIVA'] == '5' ? "selected" : "") . "  >Reduzida - Madeira - 5%</option>
                             <option value='4' " . ($resultado['tipoIVA'] == '4' ? "selected" : "") . "  >Reduzida - Açores - 4%</option>
                             <option value='0' " . ($resultado['tipoIVA'] == '0' ? "selected" : "") . "  >Isento</option>
-                        </select>
+                        </select></div>
         
                         <br>";
                         echo "<span id='validade'>";
                         if ($resultado['validade'] == NULL) {
-                            echo "<label><strong>Data de Validade:  &nbsp</label></strong><button type='button' onclick='SimValidade()'>Adicionar data de Validade</button><br>";
+                            echo "<div class='col-md-12'><label><strong>Data de Validade:  &nbsp</label></strong><button type='button' onclick='SimValidade()'>Adicionar data de Validade</button></div><br>";
                         } else {
-                            echo "<label><strong>Data de Validade:  &nbsp</label></strong><input type='date' id='retiraValidade' name='validade' value='" . $resultado['validade'] . "' required /><button onclick='NoValidade()' type='button'>Remover</button><br>";
+                            echo "<div class='col-md-12'><label><strong>Data de Validade:  &nbsp</label></strong><input type='date' class='form-control'  id='retiraValidade' name='validade' value='" . $resultado['validade'] . "' required /><button onclick='NoValidade()' type='button'>Remover</button></div><br>";
                         }
                         echo "</span>";
-                        echo "<label><strong>Condição:  &nbsp</label></strong> <select name = 'estado'>";
+                        echo "<div class='col-md-12'><label><strong>Condição:  &nbsp</label></strong> <select name = 'estado' class='form-control' >";
                         echo "<option value=0 " . ($resultado['estado'] == '0' ? "selected" : "") . ">Novo</option>";
                         echo "<option value=1 " . ($resultado['estado'] == '1' ? "selected" : "") . ">Usado</option>";
-                        echo "</select> <br>";
+                        echo "</select></div> <br>";
+                        echo '</div>';
+                        echo '<hr>
+                        <div class="row mt-2">';
 
-
-
-                        echo "<label><strong>Recursos Consumidos:  &nbsp</label></strong> <input type='number' name='recursosConsumidos' value = '" . $resultado['recursosConsumidos'] . "'required ><br>";
-                        echo "<label><strong>Custo Manutençao:  &nbsp</label></strong> <input type='number' name='custoManutencao' value = '" . $resultado['custoManutencao'] . "'required ><br>";
+                        echo "<div class='col-md-12'><label><strong>Recursos Consumidos:  &nbsp</label></strong> <input type='number' class='form-control' name='recursosConsumidos' value = '" . $resultado['recursosConsumidos'] . "'required ></div><br>";
+                        echo "<div class='col-md-12'><label><strong>Custo Manutençao:  &nbsp</label></strong> <input type='number' class='form-control' name='custoManutencao' value = '" . $resultado['custoManutencao'] . "'required ></div><br>";
                         echo "<input type='hidden' name='modoDeVenda' value = '0'required>";
                         echo "<input type='hidden' name='pesoPorVenda' value = '0'required>";
                         echo "<input type='hidden' name='arquivado' value = '0'required>";
-                        echo "<label><strong>Notas Internas:  &nbsp</label></strong> <input type='text' name='notasInternasAoFornecedor' value = '" . $resultado['notasInternasAoFornecedor'] . "'required ><br>";
+                        echo "<div class='col-md-12'><label><strong>Notas Internas:  &nbsp</label></strong> <input type='text' class='form-control' name='notasInternasAoFornecedor' value = '" . $resultado['notasInternasAoFornecedor'] . "'required ></div><br>";
                         echo "<input type='hidden' name='dataCriacaoTimeStamp' value = '" . $resultado['dataCriacaoTimeStamp'] . "'required ><br>";
+                        echo "</div>";
+                        echo "</div>";
+                        echo "</div>";
+                        echo "</div>";
+                        echo "</div>";
+                        echo "</div>";
+                        
                         echo "
-                            <input type='submit'  class='btnUser' value='Guardar'> 
+                            <center><input type='submit'  class='btnUser' value='Guardar'></center> 
                             </form>
 
 
                             <hr>
+                            <br>
 
                             <form METHOD='POST' ACTION='editarImg.php' >
                                 <input type='hidden' value='" . $_POST['idProduto'] . "' name='idProduto'>
-                                <input type='submit' class='btnUser'value='Editar Imagens '>
+                                <center><input type='submit' class='btnUser'value='Editar Imagens '></center>
                             </form>
-
+                            <br>
                             <hr>
+                            
                             <div class='contentTitle'>
                                 <h3>Adicionar produto ao armazem!</h3>
                                 <hr class='middle'>
                             </div>
-                            <hr>
+                            
                             ";
 
 
@@ -242,7 +263,7 @@
                                 echo "Não foram encontrados armazens para adicionar este produto, por favor crie 1 armazem primeiro";
                             } else {
                                 $stock = $ctrlProduto->getTodosOsProdutosDoArmazem($_POST['idProduto'], $linha['idArmazemFornecedor']);
-                                echo "<input type='number' name='stock' required value='" . $stock . "' min='0' >";
+                                echo "<input  type='number' name='stock' required value='" . $stock . "' min='0' >";
                             }
                         }
                         echo "<br>";
@@ -258,7 +279,7 @@
 
                         <hr>
 
-                <a href="verProduto.php"> <button class="btnUser" type="button">Voltar</button> </a>
+                <center><a href="verProduto.php"> <button class="btnUser" type="button">Voltar</button> </a></center>
             </div>
             <br>
         </div>

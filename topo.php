@@ -17,12 +17,31 @@ $ctrllib=new lib($db);
                             echo "</p>";
                             echo "<a href='landpage.php' class='btnn1'><i class='ti-home'></i></a>";
                             echo "<a href='ajax_user.php?codigo=4' class='btnn1'><i class='ti-power-off'></i></a>";
-                            echo "<a href='cesto.php' class='btnn1'><i class='ti-shopping-cart'></i></a>";
+                            echo '<a href="cesto.php" class="btnn1"><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+                            <lord-icon
+                                src="https://cdn.lordicon.com/aoggitwj.json"
+                                trigger="click"
+                                colors="primary:#ffffff"
+                                style="width:25px;height:25px">
+                            </lord-icon></i></a>';
+                            
                             
                         }else{
-                            echo "<a href='login.php' class='btnn1'><i class='ti-user'></i> </a>";
+                            echo '<a href="login.php" class="btnn1"><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+                            <lord-icon
+                                src="https://cdn.lordicon.com/dklbhvrt.json"
+                                trigger="click"
+                                colors="primary:#ffffff"
+                                style="width:25px;height:25px">
+                            </lord-icon> </a>';
                             echo "<a href='registar.php' class='btnn1'><i class='ti-pencil'></i></a>";
-                            echo "<a href='cesto.php' class='btnn1'><i class='ti-shopping-cart'></i></a>";
+                            echo '<a href="cesto.php" class="btnn1"><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+                            <lord-icon
+                                src="https://cdn.lordicon.com/aoggitwj.json"
+                                trigger="click"
+                                colors="primary:#ffffff"
+                                style="width:25px;height:25px">
+                            </lord-icon></i></a></a>';
                         }
                     
                     

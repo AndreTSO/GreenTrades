@@ -196,7 +196,7 @@
                                 foreach(array_slice($artigos, 0, 4) as $artigo){
                                     echo "<li class='prdt'>";
                                         echo "<div  style='cursor: pointer;' class='showPrdt'>";
-                                        echo "<a href='prodShow?q=".$artigo['idProduto']."' target='_blank'><img class='imgPrdt' src='images/IMG_PRODUTOS/Art".$artigo['idProduto']."ID0.png'/></a>";
+                                        echo "<a href='prodShow.php?q=".$artigo['idProduto']."' target='_blank'><img class='imgPrdt' src='images/IMG_PRODUTOS/Art".$artigo['idProduto']."ID0.png'/></a>";
                                         echo "</div>";
                                         echo "<p>".$artigo['nome']."</p>";
                                         echo "<p>".number_format(($artigo['precoSemIva']+(($artigo['precoSemIva']*$artigo['tipoIVA']/100))), 2, '.', '')."€</p>";
@@ -213,7 +213,7 @@
 
                                     echo "<li class='prdt'>";
                                         echo "<div  style='cursor: pointer;' class='showPrdt'>";
-                                        echo "<a href='prodShow?q=".$artigo['idProduto']."' target='_blank'><img class='imgPrdt' src='images/IMG_PRODUTOS/Art".$artigo['idProduto']."ID0.png'/></a>";
+                                        echo "<a href='prodShow.php?q=".$artigo['idProduto']."' target='_blank'><img class='imgPrdt' src='images/IMG_PRODUTOS/Art".$artigo['idProduto']."ID0.png'/></a>";
                                         echo "</div>";
                                         echo "<p>".$artigo['nome']."</p>";
                                         echo "<p>".number_format(($artigo['precoSemIva']+(($artigo['precoSemIva']*$artigo['tipoIVA']/100))), 2, '.', '')."€</p>";
@@ -242,7 +242,7 @@
 
                                     echo "<li class='prdt'>";
                                         echo "<div  style='cursor: pointer;' class='showPrdt'>";
-                                        echo "<a href='prodShow?q=".$artigo['idProduto']."' target='_blank'><img class='imgPrdt' src='images/IMG_PRODUTOS/Art".$artigo['idProduto']."ID0.png'/></a>";
+                                        echo "<a href='prodShow.php?q=".$artigo['idProduto']."' target='_blank'><img class='imgPrdt' src='images/IMG_PRODUTOS/Art".$artigo['idProduto']."ID0.png'/></a>";
                                         echo "</div>";
                                         echo "<p>".$artigo['nome']."</p>";
                                         echo "<p>".number_format(($artigo['precoSemIva']+(($artigo['precoSemIva']*$artigo['tipoIVA']/100))), 2, '.', '')."€</p>";
@@ -260,7 +260,7 @@
 
                                     echo "<li class='prdt'>";
                                         echo "<div  style='cursor: pointer;' class='showPrdt'>";
-                                        echo "<a href='prodShow?q=".$artigo['idProduto']."' target='_blank'><img class='imgPrdt' src='images/IMG_PRODUTOS/Art".$artigo['idProduto']."ID0.png'/></a>";
+                                        echo "<a href='prodShow.php?q=".$artigo['idProduto']."' target='_blank'><img class='imgPrdt' src='images/IMG_PRODUTOS/Art".$artigo['idProduto']."ID0.png'/></a>";
                                         echo "</div>";
                                         echo "<p>".$artigo['nome']."</p>";
                                         echo "<p>".number_format(($artigo['precoSemIva']+(($artigo['precoSemIva']*$artigo['tipoIVA']/100))), 2, '.', '')."€</p>";

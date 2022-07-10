@@ -63,8 +63,9 @@
                             <div class="col-12 col-sm-8 col-lg-6">
                                 <!-- Section Heading-->
                                 <div class="section_heading text-center wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                                    <h3><span>Frequently </span> Asked Questions</h3>
-                                    <p>Appland is completely creative, lightweight, clean &amp; super responsive app landing page.</p>
+                                    <h3>GreenTrades é o seu próximo mercado online</h3>
+                                    <p><span>Frequently </span> Asked Questions</p>
+                                    
                                     <div class="line"></div>
                                 </div>
                             </div>
@@ -75,23 +76,22 @@
                                 <div class="accordion faq-accordian" id="faqAccordion">
                                     <div class="card border-0 wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
                                         <div class="card-header" id="headingOne">
-                                            <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">How can I install this app?<span class="lni-chevron-up"></span></h6>
+                                            <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Como é que sei a poluição que a minha encomenda está a causar?<span class="lni-chevron-up"></span></h6>
                                         </div>
                                         <div class="collapse" id="collapseOne" aria-labelledby="headingOne" data-parent="#faqAccordion">
                                             <div class="card-body">
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quidem facere deserunt sint animi sapiente vitae suscipit.</p>
-                                                <p>Appland is completely creative, lightweight, clean &amp; super responsive app landing page.</p>
+                                                <p>Quando completar a sua encomenda, é lhe demonstrado uma pontuação referente ao nivel de poluição que irá causar.</p>
+                                                <p>Também disponibilizado uma tabela com os niveis de poluição.</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="card border-0 wow fadeInUp" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
                                         <div class="card-header" id="headingTwo">
-                                            <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">The apps isn't installing?<span class="lni-chevron-up"></span></h6>
+                                            <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">A minha encomenda será enviada diretamente para mim?<span class="lni-chevron-up"></span></h6>
                                         </div>
                                         <div class="collapse" id="collapseTwo" aria-labelledby="headingTwo" data-parent="#faqAccordion">
                                             <div class="card-body">
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quidem facere deserunt sint animi sapiente vitae suscipit.</p>
-                                                <p>Appland is completely creative, lightweight, clean &amp; super responsive app landing page.</p>
+                                                <p>Sim, a GreenTrades disponibiliza vários serviços de entregas que cobrem todo o Portugal continental e ilhas.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -110,8 +110,8 @@
                                 <!-- Support Button-->
                                 <div class="support-button text-center d-flex align-items-center justify-content-center mt-4 wow fadeInUp" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
                                     <i class="lni-emoji-sad"></i>
-                                    <p class="mb-0 px-2">Can't find your answers?</p>
-                                    <a href="contacts.php"> Contact us</a>
+                                    <p class="mb-0 px-2">Não encontra a sua pergunta?</p>
+                                    <a href="contacts.php">Contacte-nos</a>
                                 </div>
                             </div>
                         </div>

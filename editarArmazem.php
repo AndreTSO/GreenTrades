@@ -87,36 +87,37 @@
                     $resultado = $ctrlArmazem->getTodosOsDados($_POST['idArmazem']);
                 ?>
 
-                
+                <center>
 				<h6><em>Apenas altere os dados necessários.</em></h6>
-				<hr>
+				</center>
+				
 			    <form  METHOD="POST" ACTION="ajax_fornecedor.php">
 				    <input type="hidden" name="codigo" value=5>
 				    <input type="hidden" name="idArmazemFornecedor" value=<?php echo $resultado['idArmazemFornecedor']?>>
 				    <input type="hidden" name="idFornecedor" value=<?php echo $resultado['idFornecedor']?>>
 
-					<label><strong><em>Nome do Armazém: &nbsp </em></strong></label>
-				    <input id="nome" name="nome" type="text" value="<?php echo $resultado['nome']; ?>" required placeholder="">
+					<!-- <label><strong><em>Nome do Armazém: &nbsp </em></strong></label>
+				    <input id="nome" name="nome" class="form-control" type="text" value="'.$resultado['nome'].'" required placeholder="">
 				    <br>
 
 					<label><strong><em>Morada do Armazém: &nbsp </em></strong></label>
-				    <input id="morada" name="morada" value="<?php echo $resultado['morada']; ?>" type="text" required placeholder="">
+				    <input id="morada" name="morada" class="form-control" value="'.$resultado['morada'].'" type="text" required placeholder="">
 				    <br>
 
 					<label><strong><em>Nº da Porta: &nbsp </em></strong></label>
-				    <input id="nPorta" name="nPorta" value="<?php echo $resultado['nPorta']; ?>" type="number" required placeholder="">
+				    <input id="nPorta" name="nPorta" class="form-control" value="'.$resultado['nPorta'].'" type="number" required placeholder="">
 				    <br>
 					
 					<label><strong><em>Nº/Identificador do Armazém: &nbsp </em></strong></label>
-				    <input id="andar" name="andar" value="<?php echo $resultado['andar']; ?>" type="text" required placeholder="">
+				    <input id="andar" name="andar" class="form-control" value="'.$resultado['andar'].'" type="text" required placeholder="">
 				    <br>
 
 					<label><strong><em>Código Postal: &nbsp </em></strong></label>
-					<input id="codigoPostal" name="codigoPostal"  pattern="\d{4}-\d{3}" title="DDDD-DDD" type="text" value="<?php echo $resultado['codigoPostal']; ?>"required placeholder="">
+					<input id="codigoPostal" class="form-control" name="codigoPostal"  pattern="\d{4}-\d{3}" title="DDDD-DDD" type="text" value="'.$resultado['codigoPostal'].'"required placeholder="">
 					<br>
 
 					<label><strong><em>Distrito: &nbsp </em></strong></label>
-					<select name='distrito' id='distrito' onChange='obtemDistrito()' required >
+					<select name='distrito' class="form-control" id='distrito' onChange='obtemDistrito()' required >
 						<?php
 						$resultado2=$ctrldistrict->getDistrict($db);
 						
@@ -134,7 +135,7 @@
 
 					<label><strong><em>Concelho: &nbsp </em></strong></label>
 					<span id="conselho2">
-						<select name='concelho' id='concelho'  required >    
+						<select name='concelho' class="form-control" id='concelho'  required >    
 						<?php
 							$resultado2=$ctrldistrict->getConcelhoByDistrictId($db, $resultado['distrito']);
 							
@@ -152,30 +153,99 @@
 					<br>
 
 					<label><strong><em>Custo de Manutenção: &nbsp </em></strong></label>
-				    <input id="custoManutencao" name="custoManutencao" type="number" value="<?php echo $resultado['custoManutencao']; ?>" required placeholder="">
+				    <input id="custoManutencao" class="form-control" name="custoManutencao" type="number" value="'.$resultado['custoManutencao'].'" required placeholder="">
 				    <br>
 
 					<label><strong><em>Estado: &nbsp </em></strong></label>
-                    	<select name="estado">
+                    	<select class="form-control" name="estado">
 				        	<option name="estado" required value="34" <?php echo ($resultado['estado']=='34' ?"checked":""); ?> > Ativo
 				        	<option name="estado" required value="35" <?php echo ($resultado['estado']=='35' ?"checked":""); ?> > Encerrado
 							<option name="estado" required value="36" <?php echo ($resultado['estado']=='36' ?"checked":""); ?> > Indisponivel
 						</select>
-					<br>
+					<br> -->
+
+					<?php
+                    
+                    echo '<div class="container rounded bg-white mt-5 mb-5">
+                        <div class="row">
+                            <div class="col-md-4 border-right">
+                                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><span class="font-weight-bold"></span><span class="text-black-50"></span><span> </span></div>
+                            </div>
+                            <div class="col-md-5 border-right">
+                                <div class="p-3 py-5">
+                                    
+                                    
+                                    <div class="row mt-1">
+                                        <div class="col-md-12"><label class="labels"><strong><em>Nome do Armazem:&nbsp</em></strong></label><input id="nome" name="nome" class="form-control" type="text" value="'.$resultado['nome'].'" required placeholder=""></div><br>
+                                        <div class="col-md-12"><label class="labels"><strong><em>Morada do Armazem:  &nbsp&nbsp</em></strong></label><input id="morada" name="morada" class="form-control" value="'.$resultado['morada'].'" type="text" required placeholder=""></div>
+                                        <div class="col-md-12"><label class="labels"><strong><em>Porta:  &nbsp&nbsp</em></strong></label><input id="nPorta" name="nPorta" class="form-control" value="'.$resultado['nPorta'].'" type="number" required placeholder=""></div>
+										<div class="col-md-12"><label class="labels"><strong><em>Nº Identificador:  &nbsp&nbsp</em></strong></label><input id="andar" name="andar" class="form-control" value="'.$resultado['andar'].'" type="text" required placeholder=""></div>
+										<div class="col-md-12"><label class="labels"><strong><em>Distrito da Sede:  &nbsp&nbsp</em></strong></label><select name="distrito" class="form-control" id="distrito" onChange="obtemDistrito()" required >';
+										
+										$resultado2=$ctrldistrict->getDistrict($db);
+										
+										echo "<option value=''>Distrito</option>";
+										if ($resultado2 && $resultado2->RecordCount()>0){
+											
+											while ($linha=$resultado2->FetchRow()){
+												echo "<option ".($resultado['distrito']==$linha['id']?"selected":"")." value='".$linha['id']."'>".$linha['name']."</option>";
+												
+											}
+										}
+										
+									echo'</select></div>
+                                        <div class="col-md-12"><label class="labels"><strong><em>Concelho da Sede:  &nbsp&nbsp</em></strong></label><span id="conselho2">
+										<select name="concelho" class="form-control" id="concelho"  required > ';  
+										
+											$resultado2=$ctrldistrict->getConcelhoByDistrictId($db, $resultado['distrito']);
+											
+											echo "<option value=''>Concelho</option>";
+											if ($resultado2 && $resultado2->RecordCount()>0){
+												
+												while ($linha=$resultado2->FetchRow()){
+													echo "<option ".($resultado['concelho']==$linha['id']?"selected":"")." value='".$linha['id']."'>".$linha['name']."</option>";
+													
+												}
+											}
+											
+										echo'</select>
+										</span></div>
+                                        <div class="col-md-12"><label class="labels"><strong><em>Código Postal:  &nbsp&nbsp</em></strong></label><input id="codigoPostal" class="form-control" name="codigoPostal"  pattern="\d{4}-\d{3}" title="DDDD-DDD" type="text" value="'.$resultado['codigoPostal'].'"required placeholder=""></div>
+                                    </div>
+                                    <hr>
+                                    <div class="row mt-2">
+                                        <div class="col-md-12"><label class="labels"><strong><em>Custo de Manutencao: &nbsp&nbsp </em></strong></label><input id="custoManutencao" class="form-control" name="custoManutencao" type="number" value="'.$resultado['custoManutencao'].'" required placeholder=""><strong><em>&nbsp €</em></strong></div>
+                                        <div class="col-md-12"><label class="labels"><strong><em>Estado:  &nbsp&nbsp</em></strong></label><select class="form-control" name="estado">
+											<option name="estado" required value="34" '.($resultado['estado']=='34' ?"checked":"").' > Ativo
+											<option name="estado" required value="35" '.($resultado['estado']=='35' ?"checked":"").' > Encerrado
+											<option name="estado" required value="36" '.($resultado['estado']=='36' ?"checked":"").' > Indisponivel
+										</select></div>
+                                    </div>
+                                    
+                                    
+                                    ';
+                                    ?>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
 					<input type="hidden" name="poluicaoGerada" value="<?php echo $resultado['poluicaoGerada']?>">
-
+					<center>						
 					<input type="submit" value="Guardar" class="btnUser">
-
+					</center>
 					<span id="atualiza"></span><br>
 				
 				</form>
 				<hr>
+				<center>
 				<div class="opções">
 					<form ACTION="mostrarDadosArmazem.php" METHOD ="POST">
                         <input type="hidden" value="<?php echo $_POST['idArmazem'] ?>" name="idArmazem">
                         <input type="submit" value="Voltar" class="btnUser">
                     </form>
 				</div>
+				</center>
 			</div>
 			
 			

@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+<IfModule mod_env.c>
+SetEnv HTTP_MOD_REWRITE On
+</IfModule>
+
+
+RewriteEngine On
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://greentrades.me/$1 [R,L]

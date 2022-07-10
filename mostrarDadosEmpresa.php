@@ -65,7 +65,7 @@
                 </div>
                 
                 
-                <hr>
+                
                 <?php
                     if (!$ctrlFornecedor->existsEmpresa($_SESSION['nif'])) { 
                         //A empresa nao foi criada nunca!
@@ -78,7 +78,7 @@
                        $empresa = $ctrlFornecedor -> getTodosOsDados($_SESSION['nif']);
             
                 ?>
-                <strong><em>Nome do Representante:&nbsp</em></strong> <?php echo $user['nome'] ?> <br>
+                <!-- <strong><em>Nome do Representante:&nbsp</em></strong> <?php echo $user['nome'] ?> <br>
                 <strong><em>Email do Representante:&nbsp</em></strong><?php echo $user['email'] ?>
                 
                 <hr>
@@ -94,12 +94,50 @@
                 <hr>
                 <strong><em>Poluição gerada até hoje:&nbsp</em></strong><?php echo $empresa['poluicaoGerada'] ?><br>
                 <strong><em>Consumo de recursos até hoje:&nbsp</em></strong><?php echo $empresa['consumoRecursos'] ?><br>
-                <hr>
-    
+                <hr> -->
+                <?php
+                    $resultado = $ctrlUser->getTodosOsDados($_SESSION['nif']);
+                    echo '<div class="container rounded bg-white mt-5 mb-5">
+                        <div class="row">
+                            <div class="col-md-4 border-right">
+                                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><span class="font-weight-bold">' . $user['nome'] . '</span><span class="text-black-50">' . $user['email'] . '</span><span> </span></div>
+                            </div>
+                            <div class="col-md-5 border-right">
+                                <div class="p-3 py-5">
+                                    
+                                    
+                                    <div class="row mt-1">
+                                        <div class="col-md-12"><label class="labels"><strong><em>Nome da Empresa:&nbsp</em></strong></label> ' . $empresa['nomeEmpresa'] . '</div>
+                                        <div class="col-md-12"><label class="labels"><strong><em>Página da Empresa:  &nbsp&nbsp</em></strong></label><a href="'. $empresa['webSite'] . '">'. $empresa['webSite'] . '</a></div>
+                                        <div class="col-md-12"><label class="labels"><strong><em>Descrição  &nbsp&nbsp</em></strong></label>'. $empresa['descricao'] . '</div>
+                                        <div class="col-md-12"><label class="labels"><strong><em>Contacto:  &nbsp&nbsp</em></strong></label>'. $user['contato'] . '</div>
+                                    </div>
+                                    <hr>
+                                    <div class="row mt-2">
+                                        <div class="col-md-12"><label class="labels"><strong><em>Morada da Sede: &nbsp&nbsp </em></strong></label> '. $user['morada']. '</div>
+                                        <div class="col-md-12"><label class="labels"><strong><em>Distrito da Sede:  &nbsp&nbsp</em></strong></label>'. $ctrldistrict->getDistrictById($db, $user['distrito']) . '</div>
+                                        <div class="col-md-12"><label class="labels"><strong><em>Concelho da Sede: &nbsp&nbsp </em></strong></label>'. $ctrldistrict->getConcelhoById($db, $user['concelho']) . ' </div>
+                                        <div class="col-md-12"><label class="labels"><strong><em>Código Postal:  &nbsp&nbsp</em></strong></label>'. $user['codigoPostal'] . '</div>
+                                        <div class="col-md-12"><label class="labels"><strong><em>Aceita devoluções até:  &nbsp&nbsp</em></strong></label>'. $empresa['PeriodoXDiasCancelar'] .'<em> dias úteis</em></div>
+                                    </div>
+                                    <hr>
+                                    <div class="row mt-2">
+                                        <div class="col-md-12"><label class="labels"><strong><em>Poluição gerada até hoje:  &nbsp&nbsp</em></strong></label>'. $empresa['poluicaoGerada'] . '</div>
+                                        <div class="col-md-12"><label class="labels"><strong><em>Consumo de recursos até hoje:  &nbsp&nbsp</em></strong></label>'. $empresa['consumoRecursos'] . '</div>
+                                    </div>
+                                    ';
+                                    ?>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                <center>
                 <div class="opcoes">
                     <a  href = "editarDadosEmpresa.php"><button class="btnUser">Editar dados Empresa</button></a>
                     <a  href = "landpage.php"><button class="btnUser">Voltar</button></a>
                 </div>
+                </center>
                 <?php
                     }
                 ?>
