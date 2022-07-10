@@ -77,28 +77,46 @@
                        $empresa = $ctrlTransportador -> getTodosOsDados($_SESSION['nif']);
             
                 ?>
-                <strong><em>Nome do Representante:&nbsp</em></strong> <?php echo $user['nome'] ?> <br>
-                <strong><em>Email do Representante:&nbsp</em></strong><?php echo $user['email'] ?>
+
+                <div class="container rounded bg-white mt-5 mb-5">
+                    <div class="row">
+                        <div class="col-md-4 border-right">
+                            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><span class="font-weight-bold"><?php echo $user['nome'] ?></span><span class="text-black-50"><?php echo $user['email'] ?></span><span> </span></div>
+                            <!-- <strong><em>Nome do Representante:&nbsp</em></strong> <?php echo $user['nome'] ?> <br>
+                            <strong><em>Email do Representante:&nbsp</em></strong><?php echo $user['email'] ?> -->
+                        </div>
+                        <div class="col-md-5 border-right">
+                            <div class="p-3 py-5">
+                                <div class="row mt-1">
+                                    <div class="col-md-12"><label class="labels"><strong><em>Nome da Transportadora:&nbsp</em></strong></label><?php echo $empresa['nomeEmpresa'] ?></div>
+                                    <div class="col-md-12"><label class="labels"><strong><em>Descrição:&nbsp</em></strong></label><?php echo $empresa['descricao']; ?></div>
+                                    <div class="col-md-12"><label class="labels"><strong><em>Página da Empresa:&nbsp</em></strong></label><a href="<?php echo $empresa['webSite'] ?>"><?php echo $empresa['webSite'] ?></a></div>
+                                    <div class="col-md-12"><label class="labels"><strong><em>Contacto:&nbsp</em></strong></label><?php echo $user['contato'] ?></div>
+                                </div>
+                                <hr>
+                                <div class="row mt-2">
+                                    <div class="col-md-12"><label class="labels"><strong><em>Morada da Sede:&nbsp</em></strong></label><?php echo $user['morada'] ?></div><br>
+                                    <div class="col-md-12"><label class="labels"><strong><em>Distrito da Sede:&nbsp</em></strong></label><?php echo $ctrldistrict->getDistrictById($db, $user['distrito']) ?></div><br>
+                                    <div class="col-md-12"><label class="labels"><strong><em>Concelho da Sede:&nbsp</em></strong></label><?php echo $ctrldistrict->getConcelhoById($db, $user['concelho']) ?></div><br>
+                                    <div class="col-md-12"><label class="labels"><strong><em>Código Postal:&nbsp</em></strong></label><?php echo $user['codigoPostal'] ?></div><br>
+                                    <div class="col-md-12"><label class="labels"><strong><em>Entregas em :&nbsp</em></strong></label><?php echo $empresa['garantiaEntregaXHoras'] ?><strong><em>&nbsp;Horas</em></strong></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
-                <hr>
-                <strong><em>Nome da Transportadora:&nbsp</em></strong><?php echo $empresa['nomeEmpresa'] ?><br>
-                <strong><em>Descrição:&nbsp</em></strong><?php echo $empresa['descricao']; ?><br>
-                <strong><em>Página da Empresa:&nbsp</em></strong><a href="<?php echo $empresa['webSite'] ?>"><?php echo $empresa['webSite'] ?></a><br>
-                <strong><em>Contacto:&nbsp</em></strong><?php echo $user['contato'] ?><br>
-                <strong><em>Morada da Sede:&nbsp</em></strong><?php echo $user['morada'] ?><br>
-                <strong><em>Distrito da Sede:&nbsp</em></strong><?php echo $ctrldistrict->getDistrictById($db, $user['distrito']) ?><br>
-                <strong><em>Concelho da Sede:&nbsp</em></strong><?php echo $ctrldistrict->getConcelhoById($db, $user['concelho']) ?><br>
-                <strong><em>Código Postal:&nbsp</em></strong><?php echo $user['codigoPostal'] ?><br>
-                <strong><em>Entregas em :&nbsp</em></strong><?php echo $empresa['garantiaEntregaXHoras'] ?><strong><em>&nbsp;Horas</em></strong>
-                <!--<hr>
+                
+                                    <!--<hr>
                 <strong><em>Poluição gerada até hoje:&nbsp</em></strong><?php echo $empresa['poluicaoGerada'] ?><br>
                 <strong><em>Consumo de recursos até hoje:&nbsp</em></strong><?php echo $empresa['consumoRecursos'] ?><br>
                 <hr>-->
-    
+                <center>
                 <div class="opcoes">
                     <a  href = "editarDadosTransportadora.php"><button class="btnUser">Editar dados transportadora</button></a>
                     <a  href = "landpage.php"><button class="btnUser">Voltar</button></a>
                 </div>
+                </center>
                 <?php
                     }
                 ?>

@@ -60,71 +60,119 @@
                         <hr class="middle">
                     </div>
 
-                    
-                    <br>
-
+                    <?php
+                    // $resultado = $ctrlUser->getTodosOsDados($_SESSION['nif']);
+                    // echo "<center>";
+                    // echo "<div class='form1'><div class='titleInput'><strong><em>Nome:</em></strong> </div><div class='input-group'>" . $resultado['nome'] . "</div></div>";
+                    // echo "<div class='form1'><div class='titleInput'><strong><em>Sobrenome:</strong></em> </div><div class='input-group'>" . $resultado['sobreNome'] . "</div></div>";
+                    // echo "<div class='form1'><div class='titleInput'><strong><em>Género:</strong></em> </div><div class='input-group'>" . ($resultado['genero'] == "M" ? "Masculino" : ($resultado['genero'] == "F" ? "Feminino" : "Prefiro não dizer")) . "</div></div>";
+                    // echo "<div class='form1'><div class='titleInput'><strong><em>Nº de Contribuinte:</strong></em> </div><div class='input-group'>" . $resultado['nif'] . "</div></div>";
+                    // echo "<div class='form1'><div class='titleInput'><strong><em>Data de Nascimento:</strong></em> </div><div class='input-group'>" . $resultado['dataNascimento'] . "</div></div>";
+                    // echo "<div class='form1'><div class='titleInput'><strong><em>Telefone:</strong></em></div><div class='input-group'> " . $resultado['contato'] . "</div></div>";
+                    // echo "<div class='form1'><div class='titleInput'><strong><em>Email:</strong></em> </div><div class='input-group'>" . $resultado['email'] . "</div></div>";
+                    // echo "<hr>";
+                    // echo "<div class='form1'><div class='titleInput'><strong><em>Morada:</strong></em> </div><div class='input-group'>" . $resultado['morada'] . "</div></div>";
+                    // echo "<div class='form1'><div class='titleInput'><strong><em>Código Postal:</strong></em> </div><div class='input-group'>" . $resultado['codigoPostal'] . "</div></div>";
+                    // echo "<div class='form1'><div class='titleInput'><strong><em>Distrito:</strong></em> </div><div class='input-group'>" . $ctrldistrict->getDistrictById($db, $resultado['distrito']) . "</div></div>";
+                    // echo "<div class='form1'><div class='titleInput'><strong><em>Concelho:</strong></em> </div><div class='input-group'>" . $ctrldistrict->getConcelhoById($db, $resultado['concelho']) . "</div></div>";
+                    // echo "<hr>";
+                    // echo "<div class='form1'><div class='titleInput'><strong><em>Tipo De Conta:</strong></em> </div><div class='input-group'>" . ($resultado['tipoDeConta'] == 1 ? "Utilizador" : ($resultado['tipoDeConta'] == 2 ?  "Fornecedor" : ($resultado['tipoDeConta'] == 3 ?  "Transportador" : "Administrador"))) . "</div></div>";
+                    // echo "<div class='form1'><div class='titleInput'><strong><em>Mostrar Artigos Favoritos:</strong></em> </div><div class='input-group'>" . ($resultado['anuncios'] ? "Sim" : "Não") . "</div></div>";
+                    // echo "<div class='form1'><div class='titleInput'><strong><em>Registado Desde:</strong></em> </div><div class='input-group'>" . $resultado['dataRegisto'] . "</div></div>";
+                    // echo "<div class='form1'><div class='titleInput'><strong><em>Estado da sua Conta:</strong></em> </div><div class='input-group'>" . ($resultado['estadoConta'] == 30 ? "Por Verificar" : ($resultado['estadoConta'] == 31 ? "Verificada" : "Bloqueada")) . "</div></div>";
+                    // echo "<div class='form1'><div class='titleInput'><strong><em>Observações:</strong></em> </div><div class='input-group'>" . (trim($resultado['observacoes']) == "" ? "Sem observações" : $resultado['observacoes']) . "</div></div>";
+                    // echo "<div class='form1'><div class='titleInput'><strong><em>Chave API:</strong></em> </div><div class='input-group'><span id='btnAPI' ><button onclick='mostrar()'>Mostrar</button></span>  <span id='Apishow' style='display: none;' >" . $resultado['apiKey'] . "</span></div></div>";
+                    // echo "<hr>";
+                    // echo "</center>";
+                    ?>
                     <?php
                     $resultado = $ctrlUser->getTodosOsDados($_SESSION['nif']);
-                    echo "<center>";
-                    echo "<div class='form1'><div class='titleInput'><strong><em>Nome:</em></strong> </div><div class='input-group'>" . $resultado['nome']."</div></div>";
-                    echo "<div class='form1'><div class='titleInput'><strong><em>Sobrenome:</strong></em> </div><div class='input-group'>" . $resultado['sobreNome']."</div></div>";
-                    echo "<div class='form1'><div class='titleInput'><strong><em>Género:</strong></em> </div><div class='input-group'>" . ($resultado['genero'] == "M" ? "Masculino" : ($resultado['genero'] == "F" ? "Feminino" : "Prefiro não dizer"))."</div></div>";
-                    echo "<div class='form1'><div class='titleInput'><strong><em>Nº de Contribuinte:</strong></em> </div><div class='input-group'>" . $resultado['nif']."</div></div>";
-                    echo "<div class='form1'><div class='titleInput'><strong><em>Data de Nascimento:</strong></em> </div><div class='input-group'>" . $resultado['dataNascimento']."</div></div>";
-                    echo "<div class='form1'><div class='titleInput'><strong><em>Telefone:</strong></em></div><div class='input-group'> " . $resultado['contato']."</div></div>";
-                    echo "<div class='form1'><div class='titleInput'><strong><em>Email:</strong></em> </div><div class='input-group'>" . $resultado['email']."</div></div>";
-                    echo "<hr>";
-                    echo "<div class='form1'><div class='titleInput'><strong><em>Morada:</strong></em> </div><div class='input-group'>" . $resultado['morada']."</div></div>";
-                    echo "<div class='form1'><div class='titleInput'><strong><em>Código Postal:</strong></em> </div><div class='input-group'>" . $resultado['codigoPostal']."</div></div>";
-                    echo "<div class='form1'><div class='titleInput'><strong><em>Distrito:</strong></em> </div><div class='input-group'>" . $ctrldistrict->getDistrictById($db, $resultado['distrito'])."</div></div>";
-                    echo "<div class='form1'><div class='titleInput'><strong><em>Concelho:</strong></em> </div><div class='input-group'>" . $ctrldistrict->getConcelhoById($db, $resultado['concelho'])."</div></div>";
-                    echo "<hr>";
-                    echo "<div class='form1'><div class='titleInput'><strong><em>Tipo De Conta:</strong></em> </div><div class='input-group'>" . ($resultado['tipoDeConta'] == 1 ? "Utilizador" : ($resultado['tipoDeConta'] == 2 ?  "Fornecedor" : ($resultado['tipoDeConta'] == 3 ?  "Transportador" : "Administrador")))."</div></div>";
-                    echo "<div class='form1'><div class='titleInput'><strong><em>Mostrar Artigos Favoritos:</strong></em> </div><div class='input-group'>" . ($resultado['anuncios'] ? "Sim" : "Não")."</div></div>";
-                    echo "<div class='form1'><div class='titleInput'><strong><em>Registado Desde:</strong></em> </div><div class='input-group'>" . $resultado['dataRegisto']."</div></div>";
-                    echo "<div class='form1'><div class='titleInput'><strong><em>Estado da sua Conta:</strong></em> </div><div class='input-group'>" . ($resultado['estadoConta'] == 30 ? "Por Verificar" : ($resultado['estadoConta'] == 31 ? "Verificada" : "Bloqueada"))."</div></div>";
-                    echo "<div class='form1'><div class='titleInput'><strong><em>Observações:</strong></em> </div><div class='input-group'>" . (trim($resultado['observacoes']) == "" ? "Sem observações" : $resultado['observacoes'])."</div></div>";
-                    echo "<div class='form1'><div class='titleInput'><strong><em>Chave API:</strong></em> </div><div class='input-group'><span id='btnAPI' ><button onclick='mostrar()'>Mostrar</button></span>  <span id='Apishow' style='display: none;' >" . $resultado['apiKey'] . "</span></div></div>";
-                    echo "<hr>";
-                    echo "</center>";
-                    ?>
-                    <div class="opcoes">
-                        <a href="landpage.php"><button class="btnUser">Voltar</button></a>
-                        <a href="editUser.php"><button class="btnUser">Editar Dados</button></a>
-                        <button id="myBtn"class="btnUser">Eliminar Conta</button>
-                        <a href="mudarPass.php"><button class="btnUser">Mudar Password</button></a>
+                    echo '<div class="container rounded bg-white mt-5 mb-5">
+                        <div class="row">
+                            <div class="col-md-3 border-right">
+                                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">' . $resultado['nome'] . '</span><span class="text-black-50">' . $resultado['email'] . '</span><span> </span></div>
+                            </div>
+                            <div class="col-md-5 border-right">
+                                <div class="p-3 py-5">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h4 class="text-right">Perfil</h4>
+                                    </div>
+                                    
+                                    
+                                    <div class="row mt-2">
+                                        <div class="col-md-6"><label class="labels"><strong><em>Nome:  &nbsp&nbsp</em></strong></label> ' . $resultado['nome'] . '</div>
+                                        <div class="col-md-6"><label class="labels"><strong><em>Sobrenome:  &nbsp&nbsp</em></strong></label>'. $resultado['sobreNome'] . '</div>
+                                        <div class="col-md-6"><label class="labels"><strong><em>Género:  &nbsp&nbsp</em></strong></label>'. $resultado['genero'] . '</div>
+                                        <div class="col-md-6"><label class="labels"><strong><em>Nascimento:  &nbsp&nbsp</em></strong></label>'. $resultado['dataNascimento'] . '</div>
+                                    </div>
+                                    <hr>
+                                    <div class="row mt-2">
+                                        <div class="col-md-6"><label class="labels"><strong><em>Telefone: &nbsp&nbsp </em></strong></label> '. $resultado['contato'] . '</div>
+                                        <div class="col-md-6"><label class="labels"><strong><em>Nº Contribuinte:  &nbsp&nbsp</em></strong></label>'. $resultado['nif'] . '</div>
+                                        <div class="col-md-6"><label class="labels"><strong><em>Morada: &nbsp&nbsp </em></strong></label>'. $resultado['morada'] . ' </div>
+                                        <div class="col-md-6"><label class="labels"><strong><em>Código Postal:  &nbsp&nbsp</em></strong></label>'. $resultado['codigoPostal'] . '</div>
+                                        <div class="col-md-6"><label class="labels"><strong><em>Distrito:  &nbsp&nbsp</em></strong></label>'. $ctrldistrict->getDistrictById($db, $resultado['distrito']) .'</div>
+                                        <div class="col-md-6"><label class="labels"><strong><em>Concelho:  &nbsp&nbsp</em></strong></label>'. $ctrldistrict->getConcelhoById($db, $resultado['concelho']) . '</div>
+                                        <div class="col-md-8"><label class="labels"><strong><em>Email:  &nbsp&nbsp</em></strong></label>'. $resultado['email'] . '</div>
+                                    </div>
+                                    <hr>
+                                    <div class="row mt-2">
+                                        <div class="col-md-12"><label class="labels"><strong><em>Tipo de Conta:  &nbsp&nbsp</em></strong></label>'. ($resultado['tipoDeConta'] == 1 ? "Utilizador" : ($resultado['tipoDeConta'] == 2 ?  "Fornecedor" : ($resultado['tipoDeConta'] == 3 ?  "Transportador" : "Administrador"))) . '</div>
+                                        <div class="col-md-12"><label class="labels"><strong><em>Mostrar Artigos Favoritos:  &nbsp&nbsp</em></strong></label>'. ($resultado['anuncios'] ? "Sim" : "Não") . '</div>
+                                        <div class="col-md-12"><label class="labels"><strong><em>Registado Desde:  &nbsp&nbsp</em></strong></label>'. $resultado['dataRegisto'] .  '</div>
+                                        <div class="col-md-12"><label class="labels"><strong><em>Estado da sua Conta:  &nbsp&nbsp</em></strong></label>'. ($resultado['estadoConta'] == 30 ? "Por Verificar" : ($resultado['estadoConta'] == 31 ? "Verificada" : "Bloqueada")) . '</div>
+                                        <div class="col-md-12"><label class="labels"><strong><em>Observações: &nbsp&nbsp </em></strong></label>'. (trim($resultado['observacoes']) == "" ? "Sem observações" : $resultado['observacoes']) . '</div></div>
+                                        <div class="col-md-12"><label class="labels"><strong><em>Chave API: &nbsp&nbsp </em></strong></label><span id="btnAPI" ><button onclick="mostrar()">Mostrar</button></span>  <span id="Apishow" style="display: none;" >' . $resultado['apiKey'] . '</span></div>
+                                    </div>
+                                    ';
+                                    ?>
+                                </div>
+                            </div>
+                            
+                        </div>
                     </div>
                 </div>
+                <div class="opcoes">
+                <center>
+                <a href="landpage.php"><button class="btnUser">Voltar</button></a>
+                <a href="editUser.php"><button class="btnUser">Editar Dados</button></a>
+                <button id="myBtn" class="btnUser">Eliminar Conta</button>
+                <a href="mudarPass.php"><button class="btnUser">Mudar Password</button></a>
+                </center>
             </div>
-        </div>
-        <div id="myModal" class="modal">
-
-            <!-- Modal content -->
-            <div class="modal-content">
-                <span class="close">&times;</span>  
-                <h2>Tem a certeza que quer eliminar esta conta?</h2>
-                <h4>Se sim, insira a sua palavra-passe abaixo e clique em "Eliminar Definitivamente"</h4>
-                <br>
-                <br>
-                <form METHOD="POST" ACTION="ajax_user.php" name="registar">
-                    <input type="hidden" name="codigo" value=6>
-
-                    <input name="nif" type="hidden" value="<?php echo $_SESSION['nif']; ?>">
-
-                    <input name="password" type="password" required placeholder="Insira a sua password para Validar">&nbsp
-
-                    <input class="btnUser" type="submit" value="Eliminar Definitivamente">
-
-                </form>
             </div>
-
+            
         </div>
-        <?php
-        include("includes/footer.php")
-        ?>
+    </div>
+    </div>
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Tem a certeza que quer eliminar esta conta?</h2>
+            <h4>Se sim, insira a sua palavra-passe abaixo e clique em "Eliminar Definitivamente"</h4>
+            <br>
+            <br>
+            <form METHOD="POST" ACTION="ajax_user.php" name="registar">
+                <input type="hidden" name="codigo" value=6>
+
+                <input name="nif" type="hidden" value="<?php echo $_SESSION['nif']; ?>">
+
+                <input name="password" type="password" required placeholder="Insira a sua password para Validar">&nbsp
+
+                <input class="btnUser" type="submit" value="Eliminar Definitivamente">
+
+            </form>
+        </div>
+
+    </div>
+    <?php
+    include("includes/footer.php")
+    ?>
 
 
-        <!-- <div class="footer">
+    <!-- <div class="footer">
 
         </div> -->
     </div>

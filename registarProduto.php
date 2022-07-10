@@ -85,7 +85,11 @@
                 <?php
                     include 'showMsg.php';
                 ?>
-                <h1>Registo Produto</h1> 
+                <div class="contentTitle">
+                    <h2>Registo Produto</h2>
+                    <hr class="middle">
+                </div>
+                
 
                 <form ACTION = "inserirImagem.php" METHOD = "POST">
                     <?php 

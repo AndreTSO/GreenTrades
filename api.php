@@ -14,7 +14,7 @@
     include 'classes/produto.php';
     include 'classes/armazem.php';
     include 'classes/transportador.php';
-    
+    include 'classes/baseTransportador.php';
     $ctrluser = new user($db);
     $ctrldistrict = new handlerDistrict($db);
     $ctrlcart = new CartAPI($db);
@@ -22,6 +22,7 @@
     $ctrlProduto = new produto($db);
     $ctrlArmazem = new armazem($db);
     $ctrlTransportador = new transportador($db);
+    $ctrlbaseTransportador = new baseTransportador($db);
     $vetor="";
 	
 	if (isset($_GET['q']))
@@ -428,6 +429,75 @@
                 $resposta = json_encode($result,true);
                 break;
 
+                case 3004:
+                    /**
+                     * This returns a district's name when given an ID
+                     */
+                    $param= $vetor['param'];
+                    $idArmazemFornecedor=$param['idArmazemFornecedor'];               
+    
+                    $result=$ctrlArmazem->contarProdutosArmazem($idArmazemFornecedor);
+                    $resposta = json_encode($result,true);
+                    break;
+
+                case 3005:
+                    /**
+                     * This returns a district's name when given an ID
+                     */
+                    $param= $vetor['param'];
+                    $idProduto=$param['idProduto']; 
+                    $idArmazemFornecedor=$param['idArmazemFornecedor'];               
+    
+                    $result=$ctrlArmazem->removerProdutoArmazem($idProduto, $idArmazemFornecedor);
+                    $resposta = json_encode($result,true);
+                    break;
+
+                case 3006:
+                    /**
+                     * This returns a district's name when given an ID
+                     */
+                    $param= $vetor['param'];
+                    $idProduto=$param['idProduto'];            
+    
+                    $result=$ctrlArmazem->getStockandLoc($idProduto);
+                    $resposta = json_encode($result,true);
+                    break;
+                
+                case 3007:
+                    /**
+                     * This returns a district's name when given an ID
+                     */
+                    $param= $vetor['param'];
+                    $idArmazemFornecedor=$param['idArmazemFornecedor'];            
+    
+                    $result=$ctrlArmazem->eliminarArmazem($idArmazemFornecedor);
+                    $resposta = json_encode($result,true);
+                    break;
+
+                case 3007:
+                    /**
+                     * This returns a district's name when given an ID
+                     */
+                    $param= $vetor['param'];
+                    $idTransportador=$param['idTransportador'];            
+                    $nome=$param['nome'];
+                    $morada=$param['morada']; 
+                    $distrito=$param['distrito']; 
+                    $concelho=$param['concelho']; 
+                    $codigoPostal=$param['codigoPostal']; 
+                    $custoManutencao=$param['custoManutencao'];
+                    $poluicaoGerada=$param['poluicaoGerada'];
+                    $estado=$param['estado'];
+
+                    $result=$ctrlbaseTransportador->createBaseTransportador($idTransportador,$nome,$morada,$distrito,$concelho,$codigoPostal,$custoManutencao,$poluicaoGerada,$estado);
+                    $resposta = json_encode($result,true);
+                    break;
+
+                
+                
+                    
+
+                    
 
 
         } 

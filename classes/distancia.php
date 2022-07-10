@@ -48,6 +48,10 @@ class distancia {
             return round($miles, 2).' miles';
         }
     }
+    
 }
+
+$handler = new distancia();
+echo $handler->getDistance("Rua Primeiro de Maio, Loures", "Rua Dona Estefania, Lisboa", "K");
 ?>
 

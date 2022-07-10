@@ -66,18 +66,50 @@
                 
                 
                 
-                <hr>
+                
                 <?php
                     $armazem = $ctrlArmazem->getTodosOsDados($_POST['idArmazem']);
                 ?>
-                <strong><em>Nome do Armazem:&nbsp</em></strong><?php echo $armazem['nome'] ?><br>
+                <!-- <strong><em>Nome do Armazem:&nbsp</em></strong><?php echo $armazem['nome'] ?><br>
                 <strong><em>Morada do Armazem:&nbsp</em></strong><?php echo "".$armazem['morada'].", ".$armazem['nPorta'].", ".$armazem['andar'];?><br>
                 <strong><em>Distrito da Sede:&nbsp</em></strong><?php echo $ctrldistrict->getDistrictById($db, $armazem['distrito']) ?><br>
                 <strong><em>Concelho da Sede:&nbsp</em></strong><?php echo $ctrldistrict->getConcelhoById($db, $armazem['concelho']) ?><br>
                 <strong><em>Código Postal:&nbsp</em></strong><?php echo $armazem['codigoPostal'] ?><br>
                 <strong><em>Custo de Manutencao:&nbsp</em></strong><?php echo $armazem['custoManutencao'] ?><strong><em>&nbsp €</em></strong><br>
-                <strong><em>Estado:&nbsp</em></strong><?php echo ($armazem['estado']== "34"?"Ativo": ($armazem['estado'] == "35"? "Encerrado":"Indisponivel")) ?><br>
-                <hr>
+                <strong><em>Estado:&nbsp</em></strong><?php echo ($armazem['estado']== "34"?"Ativo": ($armazem['estado'] == "35"? "Encerrado":"Indisponivel")) ?><br> -->
+                <?php
+                    $resultado = $ctrlUser->getTodosOsDados($_SESSION['nif']);
+                    echo '<div class="container rounded bg-white mt-5 mb-5">
+                        <div class="row">
+                            <div class="col-md-4 border-right">
+                                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><span class="font-weight-bold"></span><span class="text-black-50"></span><span> </span></div>
+                            </div>
+                            <div class="col-md-5 border-right">
+                                <div class="p-3 py-5">
+                                    
+                                    
+                                    <div class="row mt-1">
+                                        <div class="col-md-12"><label class="labels"><strong><em>Nome do Armazem:&nbsp</em></strong></label> ' . $armazem['nome'] . '</div>
+                                        <div class="col-md-12"><label class="labels"><strong><em>Morada do Armazem:  &nbsp&nbsp</em></strong></label>'. $armazem['morada'].", ".$armazem['nPorta'].", ".$armazem['andar'] . '</div>
+                                        <div class="col-md-12"><label class="labels"><strong><em>Distrito da Sede:  &nbsp&nbsp</em></strong></label>'. $ctrldistrict->getDistrictById($db, $armazem['distrito']) . '</div>
+                                        <div class="col-md-12"><label class="labels"><strong><em>Concelho da Sede:  &nbsp&nbsp</em></strong></label>'. $ctrldistrict->getConcelhoById($db, $armazem['concelho']) . '</div>
+                                        <div class="col-md-12"><label class="labels"><strong><em>Código Postal:  &nbsp&nbsp</em></strong></label>'. $armazem['codigoPostal'] . '</div>
+                                    </div>
+                                    <hr>
+                                    <div class="row mt-2">
+                                        <div class="col-md-12"><label class="labels"><strong><em>Custo de Manutencao: &nbsp&nbsp </em></strong></label> '. $armazem['custoManutencao']. '<strong><em>&nbsp €</em></strong></div>
+                                        <div class="col-md-12"><label class="labels"><strong><em>Estado:  &nbsp&nbsp</em></strong></label>'. ($armazem['estado']== "34"?"Ativo": ($armazem['estado'] == "35"? "Encerrado":"Indisponivel")) . '</div>
+                                    </div>
+                                    
+                                    
+                                    ';
+                                    ?>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                <center>
                 <div class="opcoes">
                     <form ACTION="editarArmazem.php" METHOD ="POST">
                         <input type="hidden" value="<?php echo $_POST['idArmazem'] ?>" name="idArmazem">
@@ -86,6 +118,7 @@
                     <hr>
                     <a  href = "showArmazem.php"><button class="btnUser">Voltar</button></a>
                 </div>
+                </center>
                 
             </div>
         </div>
