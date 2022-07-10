@@ -1,5 +1,5 @@
 <?php 
-
+//Commit DiogoS
 
 include ('includes/config.php');   
 
