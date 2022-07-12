@@ -1,0 +1,479 @@
+{
+  "openapi" : "3.0.0",
+  "servers" : [ {
+    "description" : "SwaggerHub API Auto Mocking",
+    "url" : "https://virtserver.swaggerhub.com/Djo98/GreentradesAPI/1.0.0"
+  }, {
+    "description" : "Website greentrades",
+    "url" : "http://greentrades.me/"
+  }, {
+    "description" : "Website greentrades (backend2)",
+    "url" : "http://35.242.186.151/"
+  }, {
+    "description" : "Website greentrades (backup)",
+    "url" : "https://ptr.emanuelnunes.pt/"
+  } ],
+  "info" : {
+    "description" : "API for the website greentrades<hr>\nThe API has been built on a code basis. Every query requires a user's\n<tt>ID</tt> and it's corresponding <tt>apiKey</tt>. \n\nFor each class of user there is a specific number for the code.\n* 1 - User\n* 2 - Supplier\n* 3 - Transporter\n* 4 - Administrator\n\nTo build this query, do the following:\n<style type=\"text/css\">\n.tg  {border-collapse:collapse;border-spacing:0;}\n.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;\n  overflow:hidden;padding:10px 5px;word-break:normal;}\n.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;\n  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}\n.tg .tg-8m24{background-color:#000000;text-align:left;vertical-align:top}\n</style>\n<table class=\"tg\">\n<thead>\n  <tr>\n    <th class=\"tg-8m24\">id</th>\n    <th class=\"tg-8m24\">apiKey</th>\n    <th class=\"tg-8m24\">codigo</th>\n    <th class=\"tg-8m24\">param (optional)</th>\n  </tr>\n</thead>\n<tbody>\n  <tr>\n    <td class=\"tg-nto1\">111111777</td>\n    <td class=\"tg-nto1\">9BWIODSCFDZJ64IV8YQ2CGVDNFESX6ET25UYL6G2HQ4FC</td>\n    <td class=\"tg-nto1\">1xxx</td>\n    <td class=\"tg-nto1\">Set of values</td>\n  </tr>\n  <tr>\n    <td class=\"tg-nto1\">507613031</td>\n    <td class=\"tg-nto1\">IGZJ124HCHIRWPQLLHA8IK8G5N2AQ7P7TPT7YXSAODRWU</td>\n    <td class=\"tg-nto1\">2xxx</td>\n    <td class=\"tg-nto1\">Set of values</td>\n  </tr>\n  <tr>\n    <td class=\"tg-nto1\">123456789</td>\n    <td class=\"tg-nto1\">9BWIODSCFDZJ64IV8YQ2CGVDNFESX6ET25UYL6G2HQ4FC</td>\n    <td class=\"tg-nto1\">3xxx</td>\n    <td class=\"tg-nto1\">Set of values</td>\n  </tr>\n</tbody>\n</table>\n<hr>\n",
+    "version" : "1.0.0",
+    "title" : "PTR | greentrades API"
+  },
+  "paths" : {
+    "/api.php" : {
+      "get" : {
+        "tags" : [ "Users", "Fornecedor", "Transportador" ],
+        "summary" : "Handler of the GET requests",
+        "operationId" : "getFunctions",
+        "description" : "## Tests for the GET requests<br>\nCode and parameter examples for the requests:<br>\n<style type=\"text/css\">\n.tg  {border-collapse:collapse;border-spacing:0;}\n.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;\n  overflow:hidden;padding:10px 5px;word-break:normal;}\n.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;\n  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}\n.tg .tg-nto1{background-color:#000000;border-color:inherit;text-align:left;vertical-align:top}\n</style>\n<table class=\"tg\">\n<thead>\n  <tr>\n    <th class=\"tg-nto1\">codigo</th>\n    <th class=\"tg-nto1\">function</th>\n    <th class=\"tg-nto1\">param</th>\n  </tr>\n</thead>\n<tbody>\n  <thead>\n  <tr>\n    <th class=\"tg-nto1\" colspan=3>Users</th>\n  </tr>\n  </thead>\n  <tr>\n    <td class=\"tg-nto1\"><b>1001</b></td>\n    <td class=\"tg-nto1\">Get all data of a user</td>\n    <td class=\"tg-nto1\">none</td>\n  </tr>\n  <tr>\n    <td class=\"tg-nto1\"><b>1005</b></td>\n    <td class=\"tg-nto1\">Get reviews of product</td>\n    <td class=\"tg-nto1\">idProduto: ID of product</td>\n  </tr>\n  <tr>\n    <td class=\"tg-nto1\"><b>1006</b></td>\n    <td class=\"tg-nto1\">Get star value</td>\n    <td class=\"tg-nto1\">idProduto: ID of product</td>\n  </tr>\n  <tr>\n    <td class=\"tg-nto1\"><b>1011</b></td>\n    <td class=\"tg-nto1\">Get districts by ID</td>\n    <td class=\"tg-nto1\">distrito: ID of district</td>\n  </tr>\n  <tr>\n    <td class=\"tg-nto1\"><b>1012</b></td>\n    <td class=\"tg-nto1\">Get all districts</td>\n    <td class=\"tg-nto1\">none</td>\n  </tr>\n  <tr>\n    <td class=\"tg-nto1\"><b>1021</b></td>\n    <td class=\"tg-nto1\">Get municipalities by ID</td>\n    <td class=\"tg-nto1\">concelho: ID of municipality</td>\n  </tr>\n  <tr>\n    <td class=\"tg-nto1\"><b>1022</b></td>\n    <td class=\"tg-nto1\">Get all municipalities</td>\n    <td class=\"tg-nto1\">none</td>\n  </tr>\n  <tr>\n    <td class=\"tg-nto1\"><b>1023</b></td>\n    <td class=\"tg-nto1\">Get all municipalities by district ID</td>\n    <td class=\"tg-nto1\">distrito: ID of district</td>\n  </tr>\n  <tr>\n    <td class=\"tg-nto1\"><b>1031</b></td>\n    <td class=\"tg-nto1\">Get all items in the cart</td>\n    <td class=\"tg-nto1\">none</td>\n  </tr>\n  <thead>\n  <tr>\n    <th class=\"tg-nto1\" colspan=3>Fornecedor</th>\n  </tr>\n  </thead>\n  <tr>\n    <td class=\"tg-nto1\"><b>2001</b></td>\n    <td class=\"tg-nto1\">Get all data of supplier ID</td>\n    <td class=\"tg-nto1\">id: ID of supplier (idFornecedor)</td>\n  </tr>\n  <tr>\n    <td class=\"tg-nto1\"><b>2003</b></td>\n    <td class=\"tg-nto1\">Get bool if company of supplier by ID exists</td>\n    <td class=\"tg-nto1\">id: ID of supplier (idFornecedor)</td>\n  </tr>\n  <tr>\n    <td class=\"tg-nto1\"><b>2011</b></td>\n    <td class=\"tg-nto1\">Get all data of product by ID</td>\n    <td class=\"tg-nto1\">id: ID of product (idProduto)</td>\n  </tr>\n  <tr>\n    <td class=\"tg-nto1\"><b>2021</b></td>\n    <td class=\"tg-nto1\">Get all data of warehouse by ID</td>\n    <td class=\"tg-nto1\">id: ID of warehouse (idArmazemFornecedor)</td>\n  </tr>\n  <tr>\n    <td class=\"tg-nto1\"><b>2024</b></td>\n    <td class=\"tg-nto1\">Get all warehouses of supplier</td>\n    <td class=\"tg-nto1\">id: ID of supplier (idFornecedor)</td>\n  </tr>\n  <tr>\n    <td class=\"tg-nto1\"><b>2025</b></td>\n    <td class=\"tg-nto1\">Get bool if warehouse exists</td>\n    <td class=\"tg-nto1\">id: ID of supplier (idFornecedor)</td>\n  </tr>\n  <thead>\n  <tr>\n    <th class=\"tg-nto1\" colspan=3>Transportador</th>\n  </tr>\n  </thead>\n  <tr>\n    <td class=\"tg-nto1\"><b>3001</b></td>\n    <td class=\"tg-nto1\">Get all data of transporter by ID</td>\n    <td class=\"tg-nto1\">id: ID of transporter (idUserNif)</td>\n  </tr>\n  <tr>\n    <td class=\"tg-nto1\"><b>3004</b></td>\n    <td class=\"tg-nto1\">Get total of different items in a warehouse</td>\n    <td class=\"tg-nto1\">idArmazemFornecedor: ID of supplier's warehouse</td>\n  </tr>\n  <tr>\n    <td class=\"tg-nto1\"><b>3006</b></td>\n    <td class=\"tg-nto1\">Get stock of product</td>\n    <td class=\"tg-nto1\">idProduto: ID of supplier</td>\n  </tr>\n</tbody>\n</table>\n",
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "q",
+          "description" : "Query containing the code of the GET request",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "oneOf" : [ {
+                    "$ref" : "#/components/schemas/Cart"
+                  }, {
+                    "$ref" : "#/components/schemas/Product"
+                  }, {
+                    "$ref" : "#/components/schemas/ProductReview"
+                  }, {
+                    "$ref" : "#/components/schemas/ProductRating"
+                  }, {
+                    "$ref" : "#/components/schemas/Warehouse"
+                  }, {
+                    "$ref" : "#/components/schemas/WarehouseBool"
+                  }, {
+                    "$ref" : "#/components/schemas/WarehouseCount"
+                  }, {
+                    "$ref" : "#/components/schemas/WarehouseItem"
+                  }, {
+                    "$ref" : "#/components/schemas/District"
+                  }, {
+                    "$ref" : "#/components/schemas/User"
+                  }, {
+                    "$ref" : "#/components/schemas/Supplier"
+                  }, {
+                    "$ref" : "#/components/schemas/Transporter"
+                  } ]
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad input parameter"
+          },
+          "404" : {
+            "description" : "User not found"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Users", "Fornecedor", "Transportador" ],
+        "summary" : "Handler of the POST requests",
+        "operationId" : "postFunctions",
+        "description" : "## Tests for the POST requests<br>\nCode and parameter examples for the requests:<br>\n<style type=\"text/css\">\n.tg  {border-collapse:collapse;border-spacing:0;}\n.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;\n  overflow:hidden;padding:10px 5px;word-break:normal;}\n.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;\n  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}\n.tg .tg-nto1{background-color:#000000;border-color:inherit;text-align:left;vertical-align:top}\n</style>\n<table class=\"tg\">\n<thead>\n  <tr>\n    <th class=\"tg-nto1\">codigo</th>\n    <th class=\"tg-nto1\">function</th>\n    <th class=\"tg-nto1\">param</th>\n  </tr>\n</thead>\n<tbody>\n  <thead>\n  <tr>\n    <th class=\"tg-nto1\" colspan=3>Users</th>\n  </tr>\n  </thead>\n  <tr>\n    <td class=\"tg-nto1\"><b>1003</b></td>\n    <td class=\"tg-nto1\">Register a new user</td>\n    <td class=\"tg-nto1\">nif, nome, sobreNome, genero, email, senha, morada, codigoPostal, distrito, concelho, dataNascimento, contacto, anuncios</td>\n  </tr>\n  <tr>\n    <td class=\"tg-nto1\"><b>1004</b></td>\n    <td class=\"tg-nto1\">Create new review</td>\n    <td class=\"tg-nto1\">nif, idProduto, estrelas, comentario</td>\n  </tr>\n  <tr>\n    <td class=\"tg-nto1\"><b>1034</b></td>\n    <td class=\"tg-nto1\">Add new item to the cart</td>\n    <td class=\"tg-nto1\">idProduto, qtt</td>\n  </tr>\n  <thead>\n  <tr>\n    <th class=\"tg-nto1\" colspan=3>Fornecedor</th>\n  </tr>\n  </thead>\n  <tr>\n    <td class=\"tg-nto1\"><b>2002</b></td>\n    <td class=\"tg-nto1\">Create supplier</td>\n    <td class=\"tg-nto1\">idFornecedor, descricao, nomeEmpresa, morada, codigoPostal, distrito, concelho, contacto, webSite, periodoXDiasCancelar, poluicaoGerada, consumoRecursos, estado</td>\n  </tr>\n  <tr>\n    <td class=\"tg-nto1\"><b>2012</b></td>\n    <td class=\"tg-nto1\">Create product</td>\n    <td class=\"tg-nto1\">idFornecedor, nome, descricao, tipo, tags, precoSemIva, recursosConsumidos, custoManutencao, estado, tipoIVA, modoDeVenda, pesoPorVenda, arquivado, notasInternasAoFornecedor, dataCriacaoTimeStamp, validade</td>\n  </tr>\n  <tr>\n    <td class=\"tg-nto1\"><b>2022</b></td>\n    <td class=\"tg-nto1\">Create warehouse</td>\n    <td class=\"tg-nto1\">idFornecedor, nome, morada, nPorta, andar, distrito, concelho, codigoPostal, custoManutencao, estado, poluicaoGerada</td>\n  </tr>\n  <thead>\n  <tr>\n    <th class=\"tg-nto1\" colspan=3>Transportador</th>\n  </tr>\n  </thead>\n  <tr>\n    <td class=\"tg-nto1\"><b>3002</b></td>\n    <td class=\"tg-nto1\">Create transporter</td>\n    <td class=\"tg-nto1\">idUserNif, nomeEmpresa, descricao, sedeMorada, sedeCodigoPostal, distrito, concelho, contacto, garantiaEntregaXHoras, webSite\n    </td>\n  </tr>\n  <tr>\n    <td class=\"tg-nto1\"><b>3008</b></td>\n    <td class=\"tg-nto1\">Create base for transporter</td>\n    <td class=\"tg-nto1\">idTransportador, nome, morada, distrito, concelho, codigoPostal, custoManutencao, poluicaoGerada, estado\n    </td>\n  </tr>\n</tbody>\n</table>\n",
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "q",
+          "description" : "Query containing the code of the POST request",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "boolean"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad input parameter"
+          },
+          "404" : {
+            "description" : "User not found"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Users", "Fornecedor", "Transportador" ],
+        "summary" : "Handler of the PUT requests",
+        "operationId" : "putFunctions",
+        "description" : "## Tests for the POST requests<br>\nCode and parameter examples for the requests:<br>\n<style type=\"text/css\">\n.tg  {border-collapse:collapse;border-spacing:0;}\n.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;\n  overflow:hidden;padding:10px 5px;word-break:normal;}\n.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;\n  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}\n.tg .tg-nto1{background-color:#000000;border-color:inherit;text-align:left;vertical-align:top}\n</style>\n<table class=\"tg\">\n<thead>\n  <tr>\n    <th class=\"tg-nto1\">codigo</th>\n    <th class=\"tg-nto1\">function</th>\n    <th class=\"tg-nto1\">param</th>\n  </tr>\n</thead>\n<tbody>\n  <thead>\n  <tr>\n    <th class=\"tg-nto1\" colspan=3>Users</th>\n  </tr>\n  </thead>\n  <tr>\n    <td class=\"tg-nto1\"><b>1002</b></td>\n    <td class=\"tg-nto1\">Update an existing user</td>\n    <td class=\"tg-nto1\">nif, nome, sobreNome, genero, email, morada, codigoPostal, distrito, concelho, contacto, anuncios</td>\n  </tr>\n  <thead>\n  <tr>\n    <th class=\"tg-nto1\" colspan=3>Fornecedor</th>\n  </tr>\n  </thead>\n  <tr>\n    <td class=\"tg-nto1\"><b>2004</b></td>\n    <td class=\"tg-nto1\">Update all data of the supplier</td>\n    <td class=\"tg-nto1\">idFornecedor, descricao, nomeEmpresa, morada, codigoPostal, distrito, concelho, contacto, webSite, periodoXDiasCancelar, poluicaoGerada, consumoRecursos, estado</td>\n  </tr>\n  <tr>\n    <td class=\"tg-nto1\"><b>2003</b></td>\n    <td class=\"tg-nto1\">Get bool if company of supplier by ID exists</td>\n    <td class=\"tg-nto1\">id: ID of supplier (idFornecedor)</td>\n  </tr>\n  <tr>\n    <td class=\"tg-nto1\"><b>2013</b></td>\n    <td class=\"tg-nto1\">Update all data of Product by ID product</td>\n    <td class=\"tg-nto1\">idProduto, idFornecedor, nome, descricao, tipo, tags, precoSemIva, recursosConsumidos, precoManutencao, estado, tipoIVA, modoDeVenda, pesoPorVenda, arquivado, notasInternasAoFornecedor, dataCriacaoTimeStamp</td>\n  </tr>\n  <thead>\n  <tr>\n    <th class=\"tg-nto1\" colspan=3>Transportador</th>\n  </tr>\n  </thead>\n  <tr>\n    <td class=\"tg-nto1\"><b>3003</b></td>\n    <td class=\"tg-nto1\">Update all data of transporter by ID</td>\n    <td class=\"tg-nto1\">idUserNif, nomeEmpresa, descricao, sedeMorada, sedeCodigoPostal, distrito, concelho, contacto garantiaEntregaXHoras, webSite, estado, poluicaoGerada\n    </td>\n  </tr>\n</tbody>\n</table>\n",
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "q",
+          "description" : "Query containing the code of the PUT request",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "boolean"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Users", "Fornecedor", "Transportador" ],
+        "summary" : "Handler of the DELETE requests",
+        "operationId" : "deleteFunctions",
+        "description" : "## Tests for the POST requests<br>\nCode and parameter examples for the requests:<br>\n<style type=\"text/css\">\n.tg  {border-collapse:collapse;border-spacing:0;}\n.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;\n  overflow:hidden;padding:10px 5px;word-break:normal;}\n.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;\n  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}\n.tg .tg-nto1{background-color:#000000;border-color:inherit;text-align:left;vertical-align:top}\n</style>\n<table class=\"tg\">\n<thead>\n  <tr>\n    <th class=\"tg-nto1\">codigo</th>\n    <th class=\"tg-nto1\">function</th>\n    <th class=\"tg-nto1\">param</th>\n  </tr>\n</thead>\n<tbody>\n  <thead>\n  <tr>\n    <th class=\"tg-nto1\" colspan=3>Users</th>\n  </tr>\n  </thead>\n  <tr>\n    <td class=\"tg-nto1\"><b>-</b></td>\n    <td class=\"tg-nto1\">-</td>\n    <td class=\"tg-nto1\">-</td>\n  </tr>\n  <thead>\n  <tr>\n    <th class=\"tg-nto1\" colspan=3>Fornecedor</th>\n  </tr>\n  </thead>\n  <tr>\n    <td class=\"tg-nto1\"><b>-</b></td>\n    <td class=\"tg-nto1\">-</td>\n    <td class=\"tg-nto1\">-</td>\n  </tr>\n  <thead>\n  <tr>\n    <th class=\"tg-nto1\" colspan=3>Transportador</th>\n  </tr>\n  </thead>\n  <tr>\n    <td class=\"tg-nto1\"><b>3005</b></td>\n    <td class=\"tg-nto1\">Delete product from warehouse</td>\n    <td class=\"tg-nto1\">idProduto, idArmazem\n    </td>\n  </tr>\n  <tr>\n    <td class=\"tg-nto1\"><b>3007</b></td>\n    <td class=\"tg-nto1\">Delete warehouse</td>\n    <td class=\"tg-nto1\">idArmazemFornecedor</td>\n  </tr>\n</tbody>\n</table>\n",
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "q",
+          "description" : "Query containing the code of the DELETE request",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Cart" : {
+        "type" : "object",
+        "properties" : {
+          "idArtigo" : {
+            "type" : "integer"
+          },
+          "quantidade" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "Product" : {
+        "type" : "object",
+        "properties" : {
+          "idProduto" : {
+            "type" : "integer"
+          },
+          "idFornecedor" : {
+            "type" : "integer"
+          },
+          "nome" : {
+            "type" : "string"
+          },
+          "descricao" : {
+            "type" : "string"
+          },
+          "tipo" : {
+            "type" : "integer"
+          },
+          "tags" : {
+            "type" : "integer"
+          },
+          "precoSemIva" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "recursosConsumidos" : {
+            "type" : "integer"
+          },
+          "custoManutencao" : {
+            "type" : "integer"
+          },
+          "estado" : {
+            "type" : "integer"
+          },
+          "tipoIVA" : {
+            "type" : "integer"
+          },
+          "modoDeVenda" : {
+            "type" : "integer"
+          },
+          "pesoPorVenda" : {
+            "type" : "integer"
+          },
+          "arquivado" : {
+            "type" : "integer"
+          },
+          "notasInternasAoFornecedor" : {
+            "type" : "string"
+          },
+          "dataCriacaoTimeStamp" : {
+            "type" : "string"
+          },
+          "validade" : {
+            "type" : "string"
+          }
+        }
+      },
+      "ProductReview" : {
+        "type" : "object",
+        "properties" : {
+          "idUser" : {
+            "type" : "integer"
+          },
+          "comentario" : {
+            "type" : "string"
+          },
+          "estrelas" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "data" : {
+            "type" : "string"
+          }
+        }
+      },
+      "ProductRating" : {
+        "type" : "object",
+        "properties" : {
+          "stars" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "avaliacoes" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "Warehouse" : {
+        "type" : "object",
+        "properties" : {
+          "idArmazemFornecedor" : {
+            "type" : "integer"
+          },
+          "idFornecedor" : {
+            "type" : "integer"
+          },
+          "nome" : {
+            "type" : "string"
+          },
+          "morada" : {
+            "type" : "string"
+          },
+          "nPorta" : {
+            "type" : "integer"
+          },
+          "andar" : {
+            "type" : "string"
+          },
+          "distrito" : {
+            "type" : "integer"
+          },
+          "concelho" : {
+            "type" : "integer"
+          },
+          "codigoPostal" : {
+            "type" : "string"
+          },
+          "custoManutencao" : {
+            "type" : "integer"
+          },
+          "estado" : {
+            "type" : "integer"
+          },
+          "poluicaoGerada" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "WarehouseBool" : {
+        "type" : "boolean"
+      },
+      "WarehouseCount" : {
+        "type" : "integer"
+      },
+      "WarehouseItem" : {
+        "type" : "object",
+        "properties" : {
+          "idArmazemFornecedor" : {
+            "type" : "integer"
+          },
+          "stock" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "District" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer"
+          },
+          "name" : {
+            "type" : "string"
+          }
+        }
+      },
+      "User" : {
+        "type" : "object",
+        "properties" : {
+          "nif" : {
+            "type" : "integer"
+          },
+          "nome" : {
+            "type" : "string"
+          },
+          "sobreNome" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string",
+            "format" : "email"
+          },
+          "genero" : {
+            "type" : "string"
+          },
+          "morada" : {
+            "type" : "string"
+          },
+          "codigoPostal" : {
+            "type" : "string"
+          },
+          "distrito" : {
+            "type" : "integer"
+          },
+          "concelho" : {
+            "type" : "integer"
+          },
+          "dataNascimento" : {
+            "type" : "string"
+          },
+          "tipoDeConta" : {
+            "type" : "integer"
+          },
+          "contato" : {
+            "type" : "integer"
+          },
+          "anuncios" : {
+            "type" : "integer"
+          },
+          "apiKey" : {
+            "type" : "string"
+          },
+          "dataRegisto" : {
+            "type" : "string"
+          },
+          "estadoConta" : {
+            "type" : "integer"
+          },
+          "observacoes" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Supplier" : {
+        "type" : "object",
+        "properties" : {
+          "idFornecedor" : {
+            "type" : "integer"
+          },
+          "descricao" : {
+            "type" : "string"
+          },
+          "nomeEmpresa" : {
+            "type" : "string"
+          },
+          "morada" : {
+            "type" : "string"
+          },
+          "codigoPostal" : {
+            "type" : "string"
+          },
+          "distrito" : {
+            "type" : "integer"
+          },
+          "concelho" : {
+            "type" : "integer"
+          },
+          "contacto" : {
+            "type" : "integer"
+          },
+          "webSite" : {
+            "type" : "string"
+          },
+          "PeriodoXDiasCancelar" : {
+            "type" : "integer"
+          },
+          "poluicaoGerada" : {
+            "type" : "integer"
+          },
+          "consumoRecursos" : {
+            "type" : "integer"
+          },
+          "estado" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "Transporter" : {
+        "type" : "object",
+        "properties" : {
+          "idTransportador" : {
+            "type" : "integer"
+          },
+          "nomeEmpresa" : {
+            "type" : "string"
+          },
+          "descricao" : {
+            "type" : "string"
+          },
+          "morada" : {
+            "type" : "string"
+          },
+          "codigoPostal" : {
+            "type" : "string"
+          },
+          "distrito" : {
+            "type" : "integer"
+          },
+          "concelho" : {
+            "type" : "integer"
+          },
+          "contacto" : {
+            "type" : "integer"
+          },
+          "garantiaEntregaXHoras" : {
+            "type" : "integer"
+          },
+          "webSite" : {
+            "type" : "string"
+          },
+          "estado" : {
+            "type" : "integer"
+          }
+        }
+      }
+    }
+  }
+}
