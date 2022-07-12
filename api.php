@@ -8,21 +8,22 @@
 
     include 'classes/user.php';
     include 'classes/district.php';
-    include 'CartAPI.php';
-    include 'FornecedorAPI.php';
+    include 'classes/consumidor.php';
     include 'classes/fornecedor.php';
     include 'classes/produto.php';
     include 'classes/armazem.php';
     include 'classes/transportador.php';
     include 'classes/baseTransportador.php';
+    include 'classes/comentarios.php';
     $ctrluser = new user($db);
     $ctrldistrict = new handlerDistrict($db);
-    $ctrlcart = new CartAPI($db);
+    
     $ctrlFornecedor = new fornecedor($db);
     $ctrlProduto = new produto($db);
     $ctrlArmazem = new armazem($db);
     $ctrlTransportador = new transportador($db);
     $ctrlbaseTransportador = new baseTransportador($db);
+    $ctrlcomentarios = new comentarios($db);
     $vetor="";
 	
 	if (isset($_GET['q']))
@@ -34,6 +35,7 @@
     $resposta="\n -> NO INPUT DATA"; 
 	if (isset($_GET['q']))
     if ($ctrluser->isAPIKeyValid($vetor['id'], $vetor['apiKey'])){
+        $ctrlconsumidor = new consumidor($db,$vetor['id']);
         /**
          * CODE:    ╔ 1xxx ╦ user
          *          ║      ║ 
@@ -42,7 +44,11 @@
          *          ║      ╠ 1001 ═ (GET) Get all data of a user
          *          ║      ╠ 1002 ═ (PUT) Edit the data of a user
          *          ║      ╠ 1003 ═ (POST) Create a new user
+         *          ║      ║ 1004 ═ (POST) Create a new review
+         *          ║      ║ 1005 ═ (GET) Get Star Value
+         *          ║      ║ 1006 ═ (GET) GET Comment
          *          ║      ║ 
+         *          ║      ║
          *          ║      ║ > (1011 -> 1019) : functions related to districts
          *          ║      ║ 
          *          ║      ╠ 1011 ═ (GET) Get districts by ID
@@ -64,7 +70,7 @@
          *          ║      ╠
          *          ║      ╠ 2001 ═ (GET) Get all data of provider by ID
          *          ║      ╠ 2002 ═ (POST) Create Provider
-         *          ║      ╠ 2003 ═ (GET) Get Company of provider by ID
+         *          ║      ╠ 2003 ═ (GET) Get Bool if Company of provider by ID exists or not
          *          ║      ╠ 2004 ═ (PUT) Update all data of provider by ID
          *          ║      ╠
          *          ║      ║> (2011-2019) : functions related to the Product
@@ -82,16 +88,16 @@
          *          ║      ║ 2025 ═ (GET) Get bool if wareHouse exists or not of provider by ID
          *          ║      ║
          *          ╚ 3xxx ╦ transportador
-         *          ║      ║> (3001-3009) : functions related to transportador
+         *          ║      ║> (3001-3009) : functions related to conveyor
          *          ║      ╚
-         *          ║      ║ 3021 ═ (GET) Get all data of transportador by Provider ID
-         *          ║      ║ 3002 ═ (POST) Create transportador
-         *          ║      ╠ 3003 ═ (GET) Get Company of provider by ID
-         *          ║      ╠ 3004 ═ (PUT) Update all data of provider by ID
-         *          ║      ║
-         *          ║      ║
-         *          ║      ║
-         *          ║      ║
+         *          ║      ║ 3001 ═ (GET) Get all data of conveyor by Provider ID
+         *          ║      ║ 3002 ═ (POST) Create conveyor
+         *          ║      ╠ 3003 ═ (PUT) Update all data of provider by ID
+         *          ║      ╠ 3004 ═ (GET) Get all products of a wareHouse
+         *          ║      ║ 3005 ═ (DELETE) Delete product from wareHouse
+         *          ║      ║ 3006 ═ (GET) Get stock of product
+         *          ║      ║ 3007 ═ (DELETE) Delete warehouse by ID
+         *          ║      ║ 3008 ═ (POST) Create Base of Conveyor
          *          ║      ║
          *          ║      ║
          *          ║      ║
@@ -123,22 +129,21 @@
                 $resposta = json_encode($result,true);
                 break;
 
-            case 1003:
+            case 1003:		$param = $vetor['param'];
                 $result = $ctrluser->registar(
-                    $_POST['nif'],
-                    $_POST['nome'],
-                    $_POST['sobreNome'],
-                    $_POST['genero'],
-                    $_POST['email'],
-                    $_POST['password'],
-                    $_POST['morada'],
-                    $_POST['codigoPostal'],
-                    $_POST['distrito'],
-                    $_POST['concelho'],
-                    $_POST['dataNascimento'],
-                    $_POST['tipoDeConta'],
-                    $_POST['contato'],
-                    $_POST['anuncios'],
+                    $param['nif'],
+                    $param['nome'],
+                    $param['sobreNome'],
+                    $param['genero'],
+                    $param['email'],		    $param['senha'],
+                    $param['morada'],
+                    $param['codigoPostal'],
+                    $param['distrito'],
+                    $param['concelho'],
+                    $param['dataNascimento'],
+                    $param['tipoDeConta'],
+                    $param['contacto'],
+                    $param['anuncios'],
                 );
                 if ($result) {
                     http_response_code(201);
@@ -146,6 +151,30 @@
                 } else {
                     $resposta = json_encode(array("faultID"=>"POST METHOD TEST FAILED", "fault"=>"USER WITH SAME ID ALREADY EXISTS"));
                 }
+                break;
+            
+            case 1004:
+                $param = $vetor["param"];
+                $nif=$param['nif'];
+                $idProduto=$param['idProduto'];
+                $estrelas=$param['estrelas'];
+                $comentario=$param['comentario'];
+                $result = $ctrlcomentarios->criaComentario($nif, $idProduto, $estrelas, $comentario);
+                $resposta = json_encode($result);
+                break;
+
+            case 1005:
+                $param = $vetor["param"];
+                $idProduto=$param['idProduto'];
+                $result = $ctrlcomentarios->getComentarios($idProduto);
+                $resposta = json_encode($result);
+                break;
+            
+            case 1006:
+                $param = $vetor["param"];
+                $idProduto=$param['idProduto'];
+                $result = $ctrlcomentarios->getStarsValue($idProduto);
+                $resposta = json_encode($result);
                 break;
 
             case 1011:
@@ -187,11 +216,11 @@
                  * This code returns a json object of all municipalities
                  */
                 $result = $ctrldistrict->getConcelho($db);
-                $resultado2 = array();
+                $newArr = array();
                 foreach ($result as $key) {
-                    array_push($resultado2, array("id"=>$key["id"],"name"=>$key["name"]));
+                    array_push($newArr, array("id"=>$key["id"],"name"=>$key["name"]));
                 }
-                $resposta = json_encode($resultado2, true);
+                $resposta = json_encode($newArr, true);
 
                 break;
 
@@ -201,21 +230,90 @@
                  */
                 $param = $vetor['param'];
                 $result = $ctrldistrict->getConcelhoByDistrictId($db,  $param['distrito']);
-                $resposta = json_encode($result, true);
+                $newArr = array();
+                foreach ($result as $key) {
+                    array_push($newArr, array("id"=>$key["id"],"name"=>$key["name"]));
+                }
+                $resposta = json_encode($newArr, true);
                 break;
             
             case 1031:
                 /**
                  * This code returns a json object of all items inside the user's cart
                  */
-                $result = $ctrlcart->getArtigosCestoAPI($db, $vetor['id']);
+                $result = $ctrlconsumidor->getArtigosCesto();
+                $newArr = array();
+                foreach ($result as $key) {
+                    array_push($newArr, array("idArtigo"=>$key["idArtigo"],"quantidade"=>$key["quantidade"]));
+                }
+                $resposta = json_encode($newArr, true);
+                break;
+
+            case 1032:
+                /**
+                 * This code returns a json object of all items inside the user's cart
+                 */
+                $result = $ctrlconsumidor->getNumberArticlesOfCesto();
+
+                $resposta = json_encode($result, true);
+                break;
+
+            case 1033:
+                /**
+                 * This code returns a json object of all items inside the user's cart
+                 */
+                $param = $vetor['param'];
+                $idP=$param['idP'];
+                $result = $ctrlconsumidor->productInCesto();
+                $resposta = json_encode($result, true);
+                break;
+            
+            case 1034:
+                /**
+                 * This code returns a json object of all items inside the user's cart
+                 */
+                $param = $vetor['param'];
+                $idArtigo=$param['idProduto'];
+                $quantidade=$param['qtt'];
+                $result = $ctrlconsumidor->addArtigosCesto($idArtigo, $quantidade);
                 $resposta = json_encode($result, true);
                 break;
             
             case 1035:
                 $param = $vetor['param'];
-                $ctrlcart->postNovoArtigoAPI($db, $vetor['id'], $param['idArtigo'], $param['qtt']);
+                $idArtigo=$param['idArtigo'];
+                $quantidade=$param['quantidade'];
+                $result= $ctrlconsumidor->remArtigosCesto($idArtigo, $quantidade);
+                $resposta = json_encode($result, true);
                 break;
+            
+            case 1036:
+                $param = $vetor['param'];
+                $idArtigo=$param['idArtigo'];
+                $result=$ctrlcart->remAllArtigosCesto($idArtigo);
+                $resposta = json_encode($result, true);
+                break;
+            
+            case 1037:
+                $param = $vetor['param'];
+                $idP=$param['idProduto'];
+                $newQuant=$param['newQtt'];
+                $result=$ctrlconsumidor->updQuantArtgCesto($idP, $newQuant);
+                $resposta = json_encode($result, true);
+                break;
+
+            case 1038:
+                $param = $vetor['param'];
+                $result=$ctrlcart->wipeCesto();
+                $resposta = json_encode($result, true);
+                break;
+
+            case 1039:
+                $param = $vetor['param'];
+                $result=$ctrlcart->isCestoOcupied();
+                $resposta = json_encode($result, true);
+                break;
+
 
             case 2001:
                 $param= $vetor['param'];
@@ -233,13 +331,12 @@
                 $distrito=$param['distrito'];
                 $concelho=$param['concelho'];
                 $contacto=$param['contacto'];
-                $categoriaProdutos=$param['categoriaProdutos'];
                 $webSite=$param['webSite'];
                 $periodoXDiasCancelar=$param['periodoXDiasCancelar'];
                 $poluicaoGerada=$param['poluicaoGerada'];
                 $consumoRecursos=$param['consumoRecursos'];
                 $estado=$param['estado'];
-                $result=$ctrlFornecedor->createFornecedor($idFornecedor,$descricao,$nomeEmpresa,$morada,$codigoPostal,$distrito,$concelho,$contacto,$categoriaProdutos,$webSite,$periodoXDiasCancelar,$poluicaoGerada,$consumoRecursos,$estado);
+                $result=$ctrlFornecedor->createFornecedor($idFornecedor,$descricao,$nomeEmpresa,$morada,$codigoPostal,$distrito,$concelho,$contacto,$webSite,$periodoXDiasCancelar,$poluicaoGerada,$consumoRecursos,$estado);
                 $resposta = json_encode($result,true);
                 break;
             
@@ -260,13 +357,12 @@
                 $distrito=$param['distrito'];
                 $concelho=$param['concelho'];
                 $contacto=$param['contacto'];
-                $categoriaProdutos=$param['categoriaProdutos'];
                 $webSite=$param['webSite'];
                 $periodoXDiasCancelar=$param['periodoXDiasCancelar'];
                 $poluicaoGerada=$param['poluicaoGerada'];
                 $consumoRecursos=$param['consumoRecursos'];
                 $estado=$param['estado'];
-                $result=$ctrlFornecedor->setTodosOsDados($idFornecedor,$descricao,$nomeEmpresa,$morada,$codigoPostal,$distrito,$concelho,$contacto,$categoriaProdutos,$webSite,$periodoXDiasCancelar,$poluicaoGerada,$consumoRecursos,$estado);
+                $result=$ctrlFornecedor->setTodosOsDados($idFornecedor,$descricao,$nomeEmpresa,$morada,$codigoPostal,$distrito,$concelho,$contacto,$webSite,$periodoXDiasCancelar,$poluicaoGerada,$consumoRecursos,$estado);
                 $resposta = json_encode($result,true);
                 break;
 
@@ -300,7 +396,6 @@
                 
             case 2013:
                 $param= $vetor['param'];
-                $idProduto=$param['idProduto'];
                 $idFornecedor=$param['idFornecedor'];
                 $nome=$param['nome'];
                 $descricao=$param['descricao'];
@@ -315,8 +410,8 @@
                 $pesoPorVenda=$param['pesoPorVenda'];
                 $arquivado=$param['arquivado'];
                 $notasInternasAoFornecedor=$param['notasInternasAoFornecedor'];
-                $dataCriacaoTimeStamp=$param['dataCriacaoTimeStamp'];
-                $result=$ctrlProduto->setTodosOsDados($idProduto, $idFornecedor, $nome, $descricao, $tipo, $tags, $precoSemIva, $recursosConsumidos, $custoManutencao, $estado, $tipoIVA, $modoDeVenda, $pesoPorVenda, $arquivado, $notasInternasAoFornecedor, $dataCriacaoTimeStamp);
+                $dataCriacaoTimeStamp=$param['dataCriacaoTimeStamp'];				$validade=$param['validade'];
+                $result=$ctrlProduto->setTodosOsDados($idFornecedor, $nome, $descricao, $tipo, $tags, $precoSemIva, $recursosConsumidos, $custoManutencao, $estado, $tipoIVA, $modoDeVenda, $pesoPorVenda, $arquivado, $notasInternasAoFornecedor, $dataCriacaoTimeStamp, $validade);
                 $resposta = json_encode($result,true);
                 break;
 
@@ -339,9 +434,8 @@
                 $codigoPostal=$param['codigoPostal'];
                 $custoManutencao=$param['custoManutencao'];
                 $estado=$param['estado'];
-                $refrigeracao=$param['refrigeracao'];
                 $poluicaoGerada=$param['poluicaoGerada'];
-                $result=$ctrlArmazem->createArmazem($idFornecedor, $nome, $morada, $nPorta, $andar, $distrito, $concelho, $codigoPostal, $custoManutencao, $estado, $refrigeracao, $poluicaoGerada);
+                $result=$ctrlArmazem->createArmazem($idFornecedor, $nome, $morada, $nPorta, $andar, $distrito, $concelho, $codigoPostal, $custoManutencao, $estado, $poluicaoGerada);
                 $resposta = json_encode($result,true);
                 break;
             
@@ -358,9 +452,8 @@
                 $codigoPostal=$param['codigoPostal'];
                 $custoManutencao=$param['custoManutencao'];
                 $estado=$param['estado'];
-                $refrigeracao=$param['refrigeracao'];
                 $poluicaoGerada=$param['poluicaoGerada'];
-                $result=$ctrlArmazem->setTodosOsDados($idArmazemFornecedor, $idFornecedor, $nome, $morada, $nPorta, $andar, $distrito, $concelho, $codigoPostal, $custoManutencao, $estado, $refrigeracao, $poluicaoGerada);
+                $result=$ctrlArmazem->setTodosOsDados($idArmazemFornecedor, $idFornecedor, $nome, $morada, $nPorta, $andar, $distrito, $concelho, $codigoPostal, $custoManutencao, $estado, $poluicaoGerada);
                 $resposta = json_encode($result,true);
                 break;
             
@@ -379,19 +472,13 @@
                 break;
 
             case 3001:
-                /**
-                 * This returns a district's name when given an ID
-                 */
                 $param= $vetor['param'];
                 $id=$param['id'];
                 $result = $ctrlTransportador->getTodosOsDados($vetor["id"]);
-                $resposta = json_encode($result);
+                $resposta = json_encode($result,true);
                 break;
 
             case 3002:
-                /**
-                 * This returns a district's name when given an ID
-                 */
                 $param= $vetor['param'];
                 $idUserNif=$param['idUserNif'];
                 $nomeEmpresa=$param['nomeEmpresa'];
@@ -404,14 +491,11 @@
                 $garantiaEntregaXHoras=$param['garantiaEntregaXHoras'];
                 $webSite=$param['webSite'];                
 
-                $result=$ctrlArmazem->createTransportador($idUserNif,$nomeEmpresa,$sedeMorada,$sedeCodigoPostal,$distrito,$concelho,$contacto,$garantiaEntregaXHoras,$webSite,$estado=0,$descricao);
+                $result=$ctrlTransportador->createTransportador($idUserNif,$nomeEmpresa,$sedeMorada,$sedeCodigoPostal,$distrito,$concelho,$contacto,$garantiaEntregaXHoras,$webSite,$estado=0,$descricao);
                 $resposta = json_encode($result,true);
                 break;
 
             case 3003:
-                /**
-                 * This returns a district's name when given an ID
-                 */
                 $param= $vetor['param'];
                 $idUserNif=$param['idUserNif'];
                 $nomeEmpresa=$param['nomeEmpresa'];
@@ -424,83 +508,68 @@
                 $garantiaEntregaXHoras=$param['garantiaEntregaXHoras'];
                 $webSite=$param['webSite'];
                 $estado=$param['estado'];                
-
-                $result=$ctrlArmazem->setTodosOsDados($idUserNif,$nomeEmpresa,$descricao,$sedeMorada,$sedeCodigoPostal,$distrito,$concelho,$contacto,$garantiaEntregaXHoras,$website,$estado);
+		$poluicaoGerada=$param['poluicaoGerada'];
+                $result=$ctrlArmazem->setTodosOsDados($idUserNif,$nomeEmpresa,$descricao,$sedeMorada,$sedeCodigoPostal,$distrito,$concelho,$contacto,$garantiaEntregaXHoras,$webSite,$estado,$poluicaoGerada);
                 $resposta = json_encode($result,true);
                 break;
 
-                case 3004:
-                    /**
-                     * This returns a district's name when given an ID
-                     */
-                    $param= $vetor['param'];
-                    $idArmazemFornecedor=$param['idArmazemFornecedor'];               
-    
-                    $result=$ctrlArmazem->contarProdutosArmazem($idArmazemFornecedor);
-                    $resposta = json_encode($result,true);
-                    break;
+            case 3004:
+                $param= $vetor['param'];
+                $idArmazemFornecedor=$param['idArmazemFornecedor'];               
 
-                case 3005:
-                    /**
-                     * This returns a district's name when given an ID
-                     */
-                    $param= $vetor['param'];
-                    $idProduto=$param['idProduto']; 
-                    $idArmazemFornecedor=$param['idArmazemFornecedor'];               
-    
-                    $result=$ctrlArmazem->removerProdutoArmazem($idProduto, $idArmazemFornecedor);
-                    $resposta = json_encode($result,true);
-                    break;
+                $result=$ctrlArmazem->contarProdutosArmazem($idArmazemFornecedor);
+                $resposta = json_encode($result,true);
+                break;
 
-                case 3006:
-                    /**
-                     * This returns a district's name when given an ID
-                     */
-                    $param= $vetor['param'];
-                    $idProduto=$param['idProduto'];            
-    
-                    $result=$ctrlArmazem->getStockandLoc($idProduto);
-                    $resposta = json_encode($result,true);
-                    break;
+            case 3005:
+                $param= $vetor['param'];
+                $idProduto=$param['idProduto']; 
+                $idArmazemFornecedor=$param['idArmazemFornecedor'];               
+
+                $result=$ctrlArmazem->removerProdutoArmazem($idProduto, $idArmazemFornecedor);
+                $resposta = json_encode($result,true);
+                break;
+
+            case 3006:
+                $param= $vetor['param'];
+                $idProduto=$param['idProduto'];            
+
+                $result=$ctrlArmazem->getStockandLoc($idProduto);
+                $resposta = json_encode($result,true);
+                break;
                 
-                case 3007:
-                    /**
-                     * This returns a district's name when given an ID
-                     */
-                    $param= $vetor['param'];
-                    $idArmazemFornecedor=$param['idArmazemFornecedor'];            
-    
-                    $result=$ctrlArmazem->eliminarArmazem($idArmazemFornecedor);
-                    $resposta = json_encode($result,true);
-                    break;
+            case 3007:
+                $param= $vetor['param'];
+                $idArmazemFornecedor=$param['idArmazemFornecedor'];            
 
-                case 3007:
-                    /**
-                     * This returns a district's name when given an ID
-                     */
-                    $param= $vetor['param'];
-                    $idTransportador=$param['idTransportador'];            
-                    $nome=$param['nome'];
-                    $morada=$param['morada']; 
-                    $distrito=$param['distrito']; 
-                    $concelho=$param['concelho']; 
-                    $codigoPostal=$param['codigoPostal']; 
-                    $custoManutencao=$param['custoManutencao'];
-                    $poluicaoGerada=$param['poluicaoGerada'];
-                    $estado=$param['estado'];
+                $result=$ctrlArmazem->eliminarArmazem($idArmazemFornecedor);
+                $resposta = json_encode($result,true);
+                break;
 
-                    $result=$ctrlbaseTransportador->createBaseTransportador($idTransportador,$nome,$morada,$distrito,$concelho,$codigoPostal,$custoManutencao,$poluicaoGerada,$estado);
-                    $resposta = json_encode($result,true);
-                    break;
+            case 3008:
+                $param= $vetor['param'];
+                $idTransportador=$param['idTransportador'];            
+                $nome=$param['nome'];
+                $morada=$param['morada']; 
+                $distrito=$param['distrito']; 
+                $concelho=$param['concelho']; 
+                $codigoPostal=$param['codigoPostal']; 
+                $custoManutencao=$param['custoManutencao'];
+                $poluicaoGerada=$param['poluicaoGerada'];
+                $estado=$param['estado'];
+
+                $result=$ctrlbaseTransportador->createBaseTransportador($idTransportador,$nome,$morada,$distrito,$concelho,$codigoPostal,$custoManutencao,$poluicaoGerada,$estado);
+                $resposta = json_encode($result,true);
+                break;
 
                 
-                
+            
                     
-
+            }
                     
 
 
-        } 
+         
 
     }else{
         http_response_code(401);
